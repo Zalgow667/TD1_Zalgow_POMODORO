@@ -36,6 +36,8 @@ function timer() {
         m.innerHTML--;
     }
 
+    /* MET EN ROUGE LES SECONDES SI EN DESSOUS DE 10 SECONDES */
+
     if(m.innerHTML == 0 && s.innerHTML <= 10){
         s.style.color = "red";
         m.style.color = "red";
@@ -45,6 +47,8 @@ function timer() {
         m.style.color = "white";
         semicolon.style.color = "white";
     }
+
+    /* GESTION DE LA PHASE DE REPOS ET DE TRAVAIL */
 
     if(m.innerHTML == 0 && s.innerHTML == 0){
         if(cmpt_cycle % 2 == 0){
@@ -60,6 +64,8 @@ function timer() {
         }
         cycle.innerHTML = cmpt_cycle;
         
+        /* CECI SERT POUR METTRE AU PLURIEL LE MOT CYCLE */
+
         if(cmpt_cycle > 1){
             document.getElementById('pluriel').innerHTML = " cycles"
         }
