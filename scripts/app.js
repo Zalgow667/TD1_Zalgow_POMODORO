@@ -13,13 +13,13 @@ let cmpt_cycle = 0;
 start.addEventListener('click', () => {
     if (startTimer === undefined) {
         startTimer = setInterval(timer, 20);
-    } else {
-        alert("Pomodoro déjà actif !");
+        start.innerHTML = "reset"
     }
-});
 
-reset.addEventListener('click', () => {
-    resetTimer();
+    if(start.innerHTML == "reset" && start.addEventListener('click', () => {
+        resetTimer();
+    })){
+    }
 });
 
 function timer() {
