@@ -35,9 +35,9 @@ function timer() {
         m.style.color = "red";
         semicolon.style.color = "red";
     } else {
-        s.style.color = "black";
-        m.style.color = "black";
-        semicolon.style.color = "black";
+        s.style.color = "white";
+        m.style.color = "white";
+        semicolon.style.color = "white";
     }
 
     if(m.innerHTML == 0 && s.innerHTML == 0){
