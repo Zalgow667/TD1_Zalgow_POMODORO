@@ -53,12 +53,16 @@ function timer() {
             ts.innerHTML = "Repos";
             cmpt_cycle++;
         } else {
-            m.innerHTML = 5;
+            m.innerHTML = 1;
             s.innerHTML = "00";
             ts.innerHTML = "Travail";
             cmpt_cycle++;
         }
         cycle.innerHTML = cmpt_cycle;
+        
+        if(cmpt_cycle > 1){
+            document.getElementById('pluriel').innerHTML = " cycles"
+        }
     }
 }
 

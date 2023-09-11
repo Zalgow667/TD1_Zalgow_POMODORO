@@ -28,18 +28,25 @@ body {
     margin-bottom: 2em;
 }
 
-#timer {
+#timer{
+    display: flex;
+    align-items: center;
+    padding: 3.5em;
+}
+
+#minutes, #secondes, #semicolon {
     font-size: 2em;
     font-weight: bold;
     color: rgb(255, 255, 255);
-    display: flex;
-    align-items: center;
-    margin-bottom: 1em;
-    padding: 2.5em;
-    border: solid wheat 5px;
-    border-radius: 50%;
 }
   
+.circle {
+    border: solid white 5px;
+    border-radius: 50%;
+    padding: 5em;
+    margin-top: -10em;
+    margin-bottom: 1em;
+}
 
 #minutes, #secondes {
     margin: 0 5px;
