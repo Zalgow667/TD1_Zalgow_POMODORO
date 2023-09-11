@@ -16,7 +16,7 @@ let cmpt_cycle = 0;
 
 start.addEventListener('click', () => {
     if (startTimer === undefined) {
-        startTimer = setInterval(timer, 20);
+        startTimer = setInterval(timer, 1000);
         start.innerHTML = "reset"
     }
 
@@ -52,12 +52,12 @@ function timer() {
 
     if(m.innerHTML == 0 && s.innerHTML == 0){
         if(cmpt_cycle % 2 == 0){
-            m.innerHTML = 1;
+            m.innerHTML = 5;
             s.innerHTML = "00";
             ts.innerHTML = "Repos";
             cmpt_cycle++;
         } else {
-            m.innerHTML = 1;
+            m.innerHTML = 25;
             s.innerHTML = "00";
             ts.innerHTML = "Travail";
             cmpt_cycle++;
