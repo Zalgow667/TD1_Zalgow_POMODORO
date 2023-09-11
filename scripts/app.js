@@ -1,3 +1,5 @@
+/* DECLARATION CONSTANTE ET VARIABLE */
+
 const m = document.getElementById('minutes');
 const s = document.getElementById('secondes');
 const semicolon = document.getElementById('semicolon');
@@ -10,6 +12,8 @@ let ts = document.getElementById('type_session');
 let startTimer; 
 let cmpt_cycle = 0;
 
+/* AJOUT D'UN ECOUTEUR SUR MA CONSTANTE "START" POUR LANCER LE TIMER */
+
 start.addEventListener('click', () => {
     if (startTimer === undefined) {
         startTimer = setInterval(timer, 20);
@@ -21,6 +25,8 @@ start.addEventListener('click', () => {
     })){
     }
 });
+
+/* FONCTION PERMETANT L'ECOULEMENT DU TIMER AVEC "setInterval" DANS L'ECOUTEUR */
 
 function timer() {
     if (s.innerHTML != 0) {
@@ -55,6 +61,8 @@ function timer() {
         cycle.innerHTML = cmpt_cycle;
     }
 }
+
+/* FONCTION SERVANT A REFRESH LA PAGE */
 
 function resetTimer() {
     location.reload();
