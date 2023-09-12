@@ -17,40 +17,34 @@ body {
     align-items: center;
     justify-content: center;
     color: #FFFFFF;
-    background-color: #A16730;
+    background-color: #bb5023;
 }
 
-/* Style pour le titre */
 #title {
     margin-top: 1.75em;
 }
 
-/* Style pour la session */
 #session {
     margin: 1em;
 }
 
-/* Style pour le cycle */
 #cycle {
     margin-top: 0.5em;
     margin-bottom: 2em;
 }
 
-/* Style pour le minuteur */
 #timer{
     display: flex;
     align-items: center;
     padding: 3.5em;
 }
 
-/* Style pour les minutes, secondes et le séparateur */
 #minutes, #secondes, #semicolon {
     font-size: 2em;
     font-weight: bold;
     color: #FFFFFF;
 }
   
-/* Style pour le cercle */
 .circle {
     border: solid white 5px;
     border-radius: 50%;
@@ -59,12 +53,10 @@ body {
     margin-bottom: 1em;
 }
 
-/* Style pour les minutes et les secondes */
 #minutes, #secondes {
     margin: 0 5px;
 }
- 
-/* Style pour les boutons */
+
 button {
     padding: 10px 20px;
     font-size: 1.2rem;
@@ -76,28 +68,24 @@ button {
     margin: 5px;
 }
   
-/* Style pour le survol des boutons */
 button:hover {
     background-color: rgb(71, 202, 160);
 }
 
-/* Style pour la section "choix" */
 .choix {
     padding-top: 2em;
 }
 
-/* Style pour le bouton "confirm" */
 #confirm {
     margin: 1em;
-}
-/* Style pour les paragraphes avec la classe "choix" */
+} 
+
 p.choix {
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 10px;
 }
   
-/* Style pour les champs de numéro */
 input[type="number"] {
     width: 100px;
     padding: 10px;
@@ -105,8 +93,7 @@ input[type="number"] {
     border-radius: 5px;
     font-size: 16px;
 }
-  
-/* Style pour les choix de l'utilisateur */
+
 .choiceUser {
     font-size: 18px;
     font-weight: bold;
@@ -114,19 +101,16 @@ input[type="number"] {
     margin-bottom: 10px;
 }
   
-/* Style pour l'élément avec l'id "showChoice" */
 #showChoice {
     margin-top: -15.5em;
 }
 
-/* Style pour l'élément avec l'id "type_session" */
 #type_session {
     border: solid black 4px;
     padding: 10px 2em 10px 2em;
     margin-left: 1em;
 }
 
-/* Style pour le pied de page */
 footer {
     border-top: solid white 3px;
     color: #FFFFFF; 
@@ -140,7 +124,6 @@ footer {
     margin: 0 auto; 
 }
 
-/* Style pour le lien GitHub avec l'id "mon_github" */
 #mon_github {
     text-decoration: none;
     color: #DDD9D9;
@@ -151,7 +134,7 @@ footer {
     color: #4875b5;    
 }
 
-/* Appliquez la classe d'animation au texte qui clignote */
+/* Application de l'animation de clignotement */
 .blinking-text {
     animation: blink .5s infinite;
 }
@@ -183,7 +166,7 @@ footer {
     margin-left: 15px;
 }
 
-/* Ajoutez cette classe pour le clignotement */
+/* Animation de clignotement */
 @keyframes blink {
     0% {
         color: red;
