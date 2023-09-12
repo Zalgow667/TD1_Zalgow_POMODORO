@@ -116,7 +116,7 @@ input[type="number"] {
   
 /* Style pour l'élément avec l'id "showChoice" */
 #showChoice {
-    margin-top: -14em;
+    margin-top: -15.5em;
 }
 
 /* Style pour l'élément avec l'id "type_session" */
@@ -131,12 +131,15 @@ footer {
     border-top: solid white 3px;
     color: #FFFFFF; 
     text-align: center; 
-    padding: 1em; 
+    padding: .7em; 
     position: absolute;
     bottom: 0;
     width: 100%;
-    font-size: 1.5em;
+    font-size: 1.25em;
+    max-width: 25%; 
+    margin: 0 auto; 
 }
+
 
 /* Style pour le lien GitHub avec l'id "mon_github" */
 #mon_github {
@@ -167,12 +170,17 @@ footer {
 @media screen and (max-width: 700px) {
       /* Ajustement du style pour le titre */
       #title{
-        margin-top: 0;
+        margin-top: 20px;
         font-size: 1.2em;
       }
     
       /* Ajustement du style pour la session */
       #session{
         font-size: 1em;
+        margin-top: 20px;
+      }
+
+      footer {
+        display: none;
       }
 }

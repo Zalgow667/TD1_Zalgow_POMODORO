@@ -64,6 +64,37 @@ start.addEventListener('click', () => {
     }
 });
 
+document.addEventListener('keydown', () => {
+    // Vérifie si la touche appuyée est la barre d'espace (code 32)
+    if (event.keyCode === 32) {
+        event.preventDefault(); // Empêche le défilement de la page lors de l'appui sur la barre d'espace
+
+        // Votre code pour lancer le timer ici
+        if (isSend == false) {
+            alert('Vous devez envoyer vos valeurs !');
+        } else {
+            showChoice.style.visibility = "visible";
+            choix.style.visibility = "hidden";
+            sendValue.style.visibility = "hidden";
+            showMinutesChoiceP.innerHTML = pmInput.value;
+            showMinutesChoiceW.innerHTML = wmInput.value;
+
+            if (startTimer === undefined) {
+                startTimer = setInterval(timer, 1000); // Utilisation de 1000ms pour chaque seconde
+                start.innerHTML = "reset";
+            }
+
+            // Change le bouton start en reset
+            if (start.innerHTML == "reset") {
+                start.addEventListener('click', () => {
+                    resetTimer();
+                });
+            }
+        }
+    }
+});
+
+
 // Fonction permettant l'écoulement du timer via la constante start et son écouteur et la méthode "setInterval()""
 function timer() {
     let minutes = parseInt(m.innerHTML);
