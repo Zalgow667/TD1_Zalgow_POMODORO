@@ -120,7 +120,7 @@ function timer() {
     let formattedMinutes = minutes.toString().padStart(2, '0');
     let formattedSecondes = secondes.toString().padStart(2, '0');
 
-    // Test
+    // Met à jour le titre de la page quand le timer avance
 
     document.title = `${formattedMinutes} : ${formattedSecondes} - Pomodoro !`
 

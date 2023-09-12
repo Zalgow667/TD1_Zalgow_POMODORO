@@ -88,7 +88,7 @@ button:hover {
 
 /* Style pour le bouton "confirm" */
 #confirm {
-    margin-top: 2em;
+    margin: 1em;
 }
 /* Style pour les paragraphes avec la classe "choix" */
 p.choix {
@@ -157,10 +157,11 @@ footer {
 }
 
 #progress-bar-container {
-    width: 40%;
+    width: 75%;
     background-color: #ccc;
     height: 20px;
     margin-top: 20px;
+    border-radius: 10px;
 }
   
 #progress-bar {
@@ -169,6 +170,7 @@ footer {
     background-color: #4caf50;
     transition: width 1s linear;
     position: relative;
+    border-radius: 10px;
 }
   
 #progress-text {
@@ -177,8 +179,9 @@ footer {
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
+    text-shadow: 2px 2px black;
     margin-left: 15px;
-  }
+}
 
 /* Ajoutez cette classe pour le clignotement */
 @keyframes blink {
@@ -197,7 +200,7 @@ footer {
 @media screen and (max-width: 700px) {
       /* Ajustement du style pour le titre */
       #title{
-        margin-top: 20px;
+        margin-top: 15px;
         font-size: 1.2em;
       }
     
