@@ -14,11 +14,15 @@ const showChoice = document.getElementById('showChoice');
 const showMinutesChoiceW = document.getElementById('temps_work');
 const showMinutesChoiceP = document.getElementById('temps_pause');
 const app = document.getElementById('app');
+const titleProgressBar = document.getElementById('progress-bar-title');
+const containerProgressBar = document.getElementById('progress-bar-container');
 
 let startTimer;
 let isSend = false;
 let cmpt_cycle = 0; // Compteur de cycle
 showChoice.style.visibility = "hidden"; // S'affiche quand le timer est lancer
+titleProgressBar.style.visibility = "hidden"
+containerProgressBar.style.visibility = "hidden"
 
 if (cmpt_cycle === 0 && !isSend) {
     ts.innerHTML = "rien";
@@ -69,6 +73,11 @@ start.addEventListener('click', () => {
             });
         }
     }
+
+    titleProgressBar.style.marginTop = "1em";
+    titleProgressBar.style.visibility = "visible";
+    containerProgressBar.style.visibility = "visible"
+
 });
 
 document.addEventListener('keydown', () => {

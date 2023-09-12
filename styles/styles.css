@@ -143,7 +143,7 @@ footer {
     width: 75%;
     background-color: #ccc;
     height: 20px;
-    margin-top: 20px;
+    margin-top: 2em;
     border-radius: 10px;
 }
   
@@ -164,6 +164,10 @@ footer {
     color: white;
     text-shadow: 2px 2px black;
     margin-left: 15px;
+}
+
+#progress-bar-title {
+    margin-top: 13em;
 }
 
 /* Animation de clignotement */
