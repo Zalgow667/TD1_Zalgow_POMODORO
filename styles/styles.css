@@ -8,14 +8,13 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: white;
-    background-color: rgb(71, 26, 68);
+    color: #FFFFFF;
+    background-color: #A16730;
 }
 
 #title {
@@ -40,7 +39,7 @@ body {
 #minutes, #secondes, #semicolon {
     font-size: 2em;
     font-weight: bold;
-    color: rgb(255, 255, 255);
+    color: #FFFFFF;
 }
   
 .circle {
@@ -58,8 +57,8 @@ body {
 button {
     padding: 10px 20px;
     font-size: 1.2rem;
-    background-color: rgb(60, 0, 255);
-    color: #fff;
+    background-color: #4875b5;
+    color: #FFFFFF;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -67,7 +66,7 @@ button {
 }
   
 button:hover {
-    background-color: #00ff4c;
+    background-color: rgb(71, 202, 160);
 }
 
 .choix {
@@ -91,4 +90,51 @@ button:hover {
         font-size: 1em;
       }
   }
+
+p.choix {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
   
+input[type="number"] {
+    width: 100px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+  
+.choiceUser {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+  
+#showChoice {
+    margin-top: -14em;
+}
+
+#type_session {
+    border: solid black 4px;
+    padding: 10px 2em 10px 2em;
+    margin-left: 1em;
+}
+
+footer {
+    border-top: solid white 3px;
+    color: #FFFFFF; 
+    text-align: center; 
+    padding: 1em; 
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    font-size: 1.5em;
+}
+
+#mon_github {
+    text-decoration: none;
+    color: #DDD9D9;
+    font-weight: bold;
+}

@@ -1,57 +1,93 @@
-/* DECLARATION CONSTANTE ET VARIABLE */
+// Sélection des éléments HTML par leur ID
 
 const m = document.getElementById('minutes');
 const s = document.getElementById('secondes');
-
-let pm = document.getElementById('choixMinutesP');
-let wm = document.getElementById('choixMinutesT');
-
+const pmInput = document.getElementById('choixMinutesP');
+const wmInput = document.getElementById('choixMinutesT');
 const semicolon = document.getElementById('semicolon');
-
 const start = document.getElementById('start');
+const cycle = document.getElementById('nb_cycle');
+const ts = document.getElementById('type_session');
+const choix = document.getElementById('choix');
+const sendValue = document.getElementById('confirm');
+const showChoice = document.getElementById('showChoice');
+const showMinutesChoiceW = document.getElementById('temps_work');
+const showMinutesChoiceP = document.getElementById('temps_pause');
+const app = document.getElementById('app');
 
-let cycle = document.getElementById('nb_cycle');
-let ts = document.getElementById('type_session');
+let startTimer;
+let isSend = false;
+let cmpt_cycle = -1; // Compteur de cycle
+showChoice.style.visibility = "hidden"; // S'affiche quand le timer est lancer
 
-let startTimer; 
-let cmpt_cycle = -1; /* COMPTEUR DES CYCLES */
 
-/* AJOUT D'UN ECOUTEUR SUR MA CONSTANTE "START" POUR LANCER LE TIMER */
-
-if(cmpt_cycle === 0){
-    ts.innerHTML = "rien"
+// Si le compteur de cycle est à 0 ou s'il n'y a aucun cycle, affiche "rien" dans le type de session
+if (cmpt_cycle === 0 || cycle.innerHTML == "aucun") {
+    ts.innerHTML = "rien";
 }
 
-/* DEMARRE LE POMODORO */
+// Récupérer les valeurs des champs d'entrée depuis le stockage local au chargement de la page 
+window.addEventListener('load', () => {
+    // Récupérer les valeurs depuis le localStorage ou utiliser des valeurs par défaut
+    const savedPm = localStorage.getItem('choixMinutesP') || '5';
+    const savedWm = localStorage.getItem('choixMinutesT') || '25';
+
+    // Remplir les champs d'entrée avec les valeurs récupérées
+    pmInput.value = savedPm;
+    wmInput.value = savedWm;
+    isSend = true; // Marquer comme valeurs déjà envoyées
+});
+
+// Ajout d'un écouteur a ma constante start, lance le pomdoro en cas de clique
 
 start.addEventListener('click', () => {
-    if (startTimer === undefined) {
-        startTimer = setInterval(timer, 1);
-        start.innerHTML = "reset"
+    if (isSend == false) {
+        alert('Vous devez envoyer vos valeurs !');
+    } else {
+        showChoice.style.visibility = "visible";
+        choix.style.visibility = "hidden";
+        sendValue.style.visibility = "hidden";
+        showMinutesChoiceP.innerHTML = pmInput.value;
+        showMinutesChoiceW.innerHTML = wmInput.value;
 
-    }
+        if (startTimer === undefined) {
+            startTimer = setInterval(timer, 1000); // Utilisation de 1000ms pour chaque seconde
+            start.innerHTML = "reset";
+        }
 
-    /* CHANGE LE BOUTTON START EN RESET */
-
-    if(start.innerHTML == "reset" && start.addEventListener('click', () => {
-        resetTimer();
-    })){
+        // Change le boutton start en reset
+        if (start.innerHTML == "reset") {
+            start.addEventListener('click', () => {
+                resetTimer();
+            });
+        }
     }
 });
 
-/* FONCTION PERMETANT L'ECOULEMENT DU TIMER AVEC "setInterval" DANS L'ECOUTEUR */
-
+// Fonction permettant l'écoulement du timer via la constante start et son écouteur et la méthode "setInterval()""
 function timer() {
-    if (s.innerHTML != 0) {
-        s.innerHTML--;
-    } else if (m.innerHTML != 0 && s.innerHTML == 0) {
-        s.innerHTML = 59;
-        m.innerHTML--;
+    let minutes = parseInt(m.innerHTML);
+    let secondes = parseInt(s.innerHTML);
+    let pm = parseInt(pmInput.value);
+    let wm = parseInt(wmInput.value);
+
+    if (secondes > 0) {
+        secondes--;
+    } else if (minutes > 0) {
+        minutes--;
+        secondes = 59;
     }
 
-    /* MET EN ROUGE LES SECONDES SI EN DESSOUS DE 10 SECONDES */
+    // Formatage des minutes et des secondes avec deux chiffres
+    let formattedMinutes = minutes.toString().padStart(2, '0');
+    let formattedSecondes = secondes.toString().padStart(2, '0');
 
-    if(m.innerHTML == 0 && s.innerHTML <= 10){
+    // Mettre à jour les éléments HTML
+    m.innerHTML = formattedMinutes;
+    s.innerHTML = formattedSecondes;
+
+    // Met en rouge les secondes et minutes si < 00:10
+    if (minutes === 0 && secondes <= 10) {
         s.style.color = "red";
         m.style.color = "red";
         semicolon.style.color = "red";
@@ -61,45 +97,59 @@ function timer() {
         semicolon.style.color = "white";
     }
 
-    /* GESTION DE LA PHASE DE REPOS ET DE TRAVAIL */
-
-    if(m.innerHTML == 0 && s.innerHTML == 0){
-        if(cmpt_cycle % 2 == 0){
-            m.innerHTML =  pm;
-            s.innerHTML = "00";
+    //  Gestion de la phase de travail et de repos
+    if (minutes === 0 && secondes === 0) {
+        if (cmpt_cycle % 2 === 0) {
+            formattedMinutes = pm.toString().padStart(2, '0');
             ts.innerHTML = "Repos";
-            ts.style.color = "blue"
-            cmpt_cycle++; /* INCREMENTATION DU COMPTEUR A CHAQUE CHANGEMENT DE SESSION */
+            ts.style.color = "blue";
         } else {
-            m.innerHTML = wm;
-            s.innerHTML = "00";
+            formattedMinutes = wm.toString().padStart(2, '0');
             ts.innerHTML = "Travail";
-            ts.style.color = "green"
-            cmpt_cycle++; /* INCREMENTATION DU COMPTEUR A CHAQUE CHANGEMENT DE SESSION */
+            ts.style.color = "green";
         }
-        cycle.innerHTML = cmpt_cycle;
         
-        /* CECI SERT POUR METTRE AU PLURIEL LE MOT CYCLE */
+        // Incrémente et met à jour le compteur
+        cmpt_cycle++;
+        cycle.innerHTML = cmpt_cycle;
 
-        if(cmpt_cycle > 1){
-            document.getElementById('pluriel').innerHTML = " cycles"
+        // Ceci sert a mettre au pluriel le mot "cycle"
+        if (cmpt_cycle > 1) {
+            document.getElementById('pluriel').innerHTML = " cycles";
         }
+
+        // Mettre à jour les éléments HTML avec les minutes formatées
+        m.innerHTML = formattedMinutes;
+        s.innerHTML = "00"; // Réinitialiser les secondes à 00
+
+        // Joue un bruit de cloche quand on passe a une autre session
+        let audio = new Audio("audio/cloche.mp3")
+        audio.play();
     }
 }
 
-/* FONCTION SERVANT A REFRESH LA PAGE */
+//  Fonction servant à raffraichir la page
 
 function resetTimer() {
+    // Effacer les valeurs stockées dans le localStorage lorsque vous réinitialisez le timer
+    localStorage.removeItem('choixMinutesP');
+    localStorage.removeItem('choixMinutesT');
     location.reload();
 }
 
-/* RECUPERER LA VALEUR */
+// Méthode servant a récupérer le valeur des inputs et les attribués
+function getValue() {
+    //  Récupère les valeurs des inputes
+    const pmValue = pmInput.value;
+    const wmValue = wmInput.value;
 
-function getValue(){
-
-    /* PREND LES VALEURS DES INPUTS */
-
-    pm = pm.value;
-    wm = wm.value;
+    // Vérifier si les valeurs sont numériques et positives avant de les stocker
+    if (!isNaN(pmValue) && !isNaN(wmValue) && pmValue > 0 && wmValue > 0) {
+        // Stocker les valeurs dans le localStorage
+        localStorage.setItem('choixMinutesP', pmValue);
+        localStorage.setItem('choixMinutesT', wmValue);
+        isSend = true;
+    } else {
+        alert('Veuillez entrer des valeurs valides et positives.');
+    }
 }
-

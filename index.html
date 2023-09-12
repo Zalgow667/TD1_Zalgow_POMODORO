@@ -5,15 +5,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="./styles/styles.css">
 
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
         <title>Mon Pomodoro en JS !</title>
     </head>
-    <body>
+    <body id="app">
         <h1 id="title">TIMER POMODORO</h1>
-        <h2 id="session">Vous êtes en session de <span id="type_session">Travail</span></h2>
+        <h2 id="session">Vous êtes en session de :<span id="type_session"></span></h2>
         <p id="cycle">Vous avez fait <span id="nb_cycle">aucun</span><span id="pluriel"> cycle</span></p>
 
         <div id="timer">
@@ -23,14 +23,20 @@
         <div class="circle"></div>
 
         <button id="start">start</button>
+
+        <div id="choix">
+            <p class="choiceUser">Choix minutes travail :</p>
+            <input type="number" placeholder="Entrez une valeur ici" id="choixMinutesT" value="25">
+            <p class="choiceUser">Choix minutess repos :</p>
+            <input type="number" placeholder="Entrez une valeur ici" id="choixMinutesP" value="5">
+        </div>
         
-        <p class="choix">Choix minute(s) travail :</p>
-        <input type="number" placeholder="Entrez une valeur ici" id="choixMinutesT" value="25">
-        <p>Choix minutes(s) repos :</p>
-        <input type="number" placeholder="Entrez une valeur ici" id="choixMinutesP" value="5">
-
         <button type="button" id="confirm" onclick="getValue();">Envoyer vos valeurs</button>
-
+        <p id="showChoice">Vous avez choisit <span id="temps_work"></span> minutes de travail et <span id="temps_pause"></span> minutes de pause</p>
         <script src="./scripts/app.js"></script>
+
+        <footer>
+            <p>Crée par <a href="https://github.com/Zalgow667" target="_blank" id="mon_github">Gaëtan Lepley</a> © 2023</p>
+        </footer>
     </body>
 </html>
