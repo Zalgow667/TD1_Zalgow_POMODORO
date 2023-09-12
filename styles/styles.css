@@ -1,5 +1,7 @@
+/* Importer la police Roboto depuis Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100&display=swap');
 
+/* Réinitialiser les styles par défaut pour tous les éléments */
 * {
     margin: 0;
     padding: 0;
@@ -7,6 +9,7 @@
     font-family: 'Roboto', sans-serif;
 }
 
+/* Style pour l'ensemble de la page */
 body {
     text-align: center;
     display: flex;
@@ -17,31 +20,37 @@ body {
     background-color: #A16730;
 }
 
+/* Style pour le titre */
 #title {
     margin-top: 1.75em;
 }
 
+/* Style pour la session */
 #session {
     margin: 1em;
 }
 
+/* Style pour le cycle */
 #cycle {
     margin-top: 0.5em;
     margin-bottom: 2em;
 }
 
+/* Style pour le minuteur */
 #timer{
     display: flex;
     align-items: center;
     padding: 3.5em;
 }
 
+/* Style pour les minutes, secondes et le séparateur */
 #minutes, #secondes, #semicolon {
     font-size: 2em;
     font-weight: bold;
     color: #FFFFFF;
 }
   
+/* Style pour le cercle */
 .circle {
     border: solid white 5px;
     border-radius: 50%;
@@ -50,10 +59,12 @@ body {
     margin-bottom: 1em;
 }
 
+/* Style pour les minutes et les secondes */
 #minutes, #secondes {
     margin: 0 5px;
 }
  
+/* Style pour les boutons */
 button {
     padding: 10px 20px;
     font-size: 1.2rem;
@@ -65,38 +76,28 @@ button {
     margin: 5px;
 }
   
+/* Style pour le survol des boutons */
 button:hover {
     background-color: rgb(71, 202, 160);
 }
 
+/* Style pour la section "choix" */
 .choix {
     padding-top: 2em;
 }
 
+/* Style pour le bouton "confirm" */
 #confirm {
     margin-top: 2em;
 }
-
-/* RESPONSIVE */
-
-@media screen and (max-width: 700px) {
-
-      #title{
-        margin-top: 0;
-        font-size: 1.2em;
-      }
-    
-      #session{
-        font-size: 1em;
-      }
-  }
-
+/* Style pour les paragraphes avec la classe "choix" */
 p.choix {
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 10px;
 }
   
+/* Style pour les champs de numéro */
 input[type="number"] {
     width: 100px;
     padding: 10px;
@@ -105,6 +106,7 @@ input[type="number"] {
     font-size: 16px;
 }
   
+/* Style pour les choix de l'utilisateur */
 .choiceUser {
     font-size: 18px;
     font-weight: bold;
@@ -112,16 +114,19 @@ input[type="number"] {
     margin-bottom: 10px;
 }
   
+/* Style pour l'élément avec l'id "showChoice" */
 #showChoice {
     margin-top: -14em;
 }
 
+/* Style pour l'élément avec l'id "type_session" */
 #type_session {
     border: solid black 4px;
     padding: 10px 2em 10px 2em;
     margin-left: 1em;
 }
 
+/* Style pour le pied de page */
 footer {
     border-top: solid white 3px;
     color: #FFFFFF; 
@@ -133,8 +138,23 @@ footer {
     font-size: 1.5em;
 }
 
+/* Style pour le lien GitHub avec l'id "mon_github" */
 #mon_github {
     text-decoration: none;
     color: #DDD9D9;
     font-weight: bold;
+}
+
+/* Style pour les écrans de petite taille (max-width: 700px) */
+@media screen and (max-width: 700px) {
+      /* Ajustement du style pour le titre */
+      #title{
+        margin-top: 0;
+        font-size: 1.2em;
+      }
+    
+      /* Ajustement du style pour la session */
+      #session{
+        font-size: 1em;
+      }
 }
