@@ -88,13 +88,13 @@ function timer() {
 
     // Met en rouge les secondes et minutes si < 00:10
     if (minutes === 0 && secondes <= 10) {
-        s.style.color = "red";
-        m.style.color = "red";
-        semicolon.style.color = "red";
+        m.classList.add('blinking-text');
+        s.classList.add('blinking-text');
+        semicolon.classList.add('blinking-text');
     } else {
-        s.style.color = "white";
-        m.style.color = "white";
-        semicolon.style.color = "white";
+        m.classList.remove('blinking-text');
+        s.classList.remove('blinking-text');
+        semicolon.classList.remove('blinking-text');
     }
 
     //  Gestion de la phase de travail et de repos
@@ -137,19 +137,27 @@ function resetTimer() {
     location.reload();
 }
 
-// Méthode servant a récupérer le valeur des inputs et les attribués
+// Méthode servant à récupérer le valeur des inputs et les attribués
 function getValue() {
-    //  Récupère les valeurs des inputes
-    const pmValue = pmInput.value;
-    const wmValue = wmInput.value;
+    // Récupère les valeurs des inputs
+    const pmValue = parseInt(pmInput.value);
+    const wmValue = parseInt(wmInput.value);
 
-    // Vérifier si les valeurs sont numériques et positives avant de les stocker
-    if (!isNaN(pmValue) && !isNaN(wmValue) && pmValue > 0 && wmValue > 0) {
-        // Stocker les valeurs dans le localStorage
-        localStorage.setItem('choixMinutesP', pmValue);
-        localStorage.setItem('choixMinutesT', wmValue);
+    // Utilisez Math.max pour vous assurer que les valeurs sont positives
+    const positivePmValue = Math.max(1, pmValue);
+    const positiveWmValue = Math.max(1, wmValue);
+
+    // Vérifier si les valeurs sont numériques avant de les stocker
+    if (!isNaN(pmValue) && !isNaN(wmValue)) {
+        // Stocker les valeurs positives dans le localStorage
+        localStorage.setItem('choixMinutesP', positivePmValue.toString());
+        localStorage.setItem('choixMinutesT', positiveWmValue.toString());
         isSend = true;
+        
+        // Mettre à jour les champs d'entrée avec les valeurs positives
+        pmInput.value = positivePmValue.toString();
+        wmInput.value = positiveWmValue.toString();
     } else {
-        alert('Veuillez entrer des valeurs valides et positives.');
+        alert('Veuillez entrer des valeurs numériques valides.');
     }
 }

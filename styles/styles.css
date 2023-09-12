@@ -145,6 +145,24 @@ footer {
     font-weight: bold;
 }
 
+/* Appliquez la classe d'animation au texte qui clignote */
+.blinking-text {
+    animation: blink .5s infinite;
+}
+
+/* Ajoutez cette classe pour le clignotement */
+@keyframes blink {
+    0% {
+        color: red;
+    }
+    50% {
+        color: white;
+    }
+    100% {
+        color: red;
+    }
+}
+
 /* Style pour les écrans de petite taille (max-width: 700px) */
 @media screen and (max-width: 700px) {
       /* Ajustement du style pour le titre */
