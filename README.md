@@ -1,4 +1,4 @@
-# Pomodoro Timer
+# Pomodoro Timer 🍅
 
 Le Pomodoro Timer est une application de gestion du temps basée sur la technique de gestion du temps Pomodoro. Il vous permet de travailler avec une séquence de travail concentré (généralement 25 minutes) suivie d'une courte pause (généralement 5 minutes), avec des cycles de travail et de pause.
 
