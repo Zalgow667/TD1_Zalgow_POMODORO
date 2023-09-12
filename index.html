@@ -10,15 +10,15 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
         <link rel="shortcut icon" type="image/png" href="images/logo.png">
 
-        <title>Mon Pomodoro en JS !</title>
+        <title>25 : 00 - Pomodoro en JS !</title>
     </head>
     <body id="app">
         <h1 id="title">TIMER POMODORO</h1>
         <h2 id="session">Vous êtes en session de :<span id="type_session"></span></h2>
-        <p id="cycle">Vous avez fait <span id="nb_cycle">aucun</span><span id="pluriel"> cycle</span></p>
+        <p id="cycle">Vous avez fait <span id="nb_cycle">0</span><span id="pluriel"> cycle</span></p>
 
         <div id="timer">
-            <p id="minutes">00</p><p id="semicolon">:</p><p id="secondes">00</p>
+            <p id="minutes">25</p><p id="semicolon">:</p><p id="secondes">00</p>
         </div>
     
         <div class="circle"></div>
@@ -32,6 +32,13 @@
             <input type="number" placeholder="Entrez une valeur ici" id="choixMinutesP" value="5">
         </div>
         
+        <div id="progress-bar-container">
+            <div id="progress-bar">
+              <span id="progress-text">0%</span>
+            </div>
+        </div>
+          
+
         <button type="button" id="confirm" onclick="getValue();">Envoyer vos valeurs</button>
         <p id="showChoice">Vous avez choisit : <span id="temps_work"></span> minutes de travail et <span id="temps_pause"></span> minutes de pause</p>
         <script src="./scripts/app.js"></script>

@@ -17,14 +17,12 @@ const app = document.getElementById('app');
 
 let startTimer;
 let isSend = false;
-let cmpt_cycle = -1; // Compteur de cycle
+let cmpt_cycle = 0; // Compteur de cycle
 showChoice.style.visibility = "hidden"; // S'affiche quand le timer est lancer
 
-
-// Si le compteur de cycle est à 0 ou s'il n'y a aucun cycle, affiche "rien" dans le type de session
-if (cmpt_cycle === 0 || cycle.innerHTML == "aucun") {
+if (cmpt_cycle === 0 && !isSend) {
     ts.innerHTML = "rien";
-}
+} 
 
 // Récupérer les valeurs des champs d'entrée depuis le stockage local au chargement de la page 
 window.addEventListener('load', () => {
@@ -41,6 +39,15 @@ window.addEventListener('load', () => {
 // Ajout d'un écouteur a ma constante start, lance le pomdoro en cas de clique
 
 start.addEventListener('click', () => {
+
+    // Si le compteur de cycle est à 0 ou s'il n'y a aucun cycle, affiche "rien" dans le type de session
+    if (cmpt_cycle === 0 && !isSend) {
+        ts.innerHTML = "rien";
+    } else {
+        ts.innerHTML = "Travail";
+        ts.style.color = "green"
+    }
+
     if (isSend == false) {
         alert('Vous devez envoyer vos valeurs !');
     } else {
@@ -51,7 +58,7 @@ start.addEventListener('click', () => {
         showMinutesChoiceW.innerHTML = wmInput.value;
 
         if (startTimer === undefined) {
-            startTimer = setInterval(timer, 1000); // Utilisation de 1000ms pour chaque seconde
+            startTimer = setInterval(timer, 10); // Utilisation de 1000ms pour chaque seconde
             start.innerHTML = "reset";
         }
 
@@ -113,6 +120,10 @@ function timer() {
     let formattedMinutes = minutes.toString().padStart(2, '0');
     let formattedSecondes = secondes.toString().padStart(2, '0');
 
+    // Test
+
+    document.title = `${formattedMinutes} : ${formattedSecondes} - Pomodoro !`
+
     // Mettre à jour les éléments HTML
     m.innerHTML = formattedMinutes;
     s.innerHTML = formattedSecondes;
@@ -157,6 +168,19 @@ function timer() {
         let audio = new Audio("audio/cloche.mp3")
         audio.play();
     }
+
+    // Calculez le pourcentage de temps restant
+    const totalTime = cmpt_cycle % 2 === 0 ? wm * 60 : pm * 60; // En secondes
+    const remainingSeconds = minutes * 60 + secondes;
+    const progressPercentage = ((totalTime - remainingSeconds) / totalTime) * 100;
+
+    // Mettez à jour la largeur de la barre de progression
+    const progressBar = document.getElementById('progress-bar');
+    progressBar.style.width = `${progressPercentage}%`;
+
+    // Mettez à jour le texte du pourcentage
+    const progressText = document.getElementById('progress-text');
+    progressText.textContent = `${progressPercentage.toFixed(2)}%`;
 }
 
 //  Fonction servant à raffraichir la page
@@ -173,6 +197,10 @@ function getValue() {
     // Récupère les valeurs des inputs
     const pmValue = parseInt(pmInput.value);
     const wmValue = parseInt(wmInput.value);
+    
+    if(wmValue >= 1){
+        m.innerHTML = wmValue;
+    }
 
     // Utilisez Math.max pour vous assurer que les valeurs sont positives
     const positivePmValue = Math.max(1, pmValue);
@@ -192,3 +220,6 @@ function getValue() {
         alert('Veuillez entrer des valeurs numériques valides.');
     }
 }
+
+
+

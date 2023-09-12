@@ -156,6 +156,30 @@ footer {
     animation: blink .5s infinite;
 }
 
+#progress-bar-container {
+    width: 40%;
+    background-color: #ccc;
+    height: 20px;
+    margin-top: 20px;
+}
+  
+#progress-bar {
+    width: 0;
+    height: 100%;
+    background-color: #4caf50;
+    transition: width 1s linear;
+    position: relative;
+}
+  
+#progress-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    margin-left: 15px;
+  }
+
 /* Ajoutez cette classe pour le clignotement */
 @keyframes blink {
     0% {
