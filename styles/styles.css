@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
 }
 
 body {
@@ -74,4 +77,18 @@ button:hover {
 #confirm {
     margin-top: 2em;
 }
+
+/* RESPONSIVE */
+
+@media screen and (max-width: 700px) {
+
+      #title{
+        margin-top: 0;
+        font-size: 1.2em;
+      }
+    
+      #session{
+        font-size: 1em;
+      }
+  }
   

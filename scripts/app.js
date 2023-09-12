@@ -14,7 +14,7 @@ let cycle = document.getElementById('nb_cycle');
 let ts = document.getElementById('type_session');
 
 let startTimer; 
-let cmpt_cycle = 0;
+let cmpt_cycle = -1; /* COMPTEUR DES CYCLES */
 
 /* AJOUT D'UN ECOUTEUR SUR MA CONSTANTE "START" POUR LANCER LE TIMER */
 
@@ -26,9 +26,9 @@ if(cmpt_cycle === 0){
 
 start.addEventListener('click', () => {
     if (startTimer === undefined) {
-        startTimer = setInterval(timer, 1000);
+        startTimer = setInterval(timer, 1);
         start.innerHTML = "reset"
-        cmpt_cycle = 1;
+
     }
 
     /* CHANGE LE BOUTTON START EN RESET */
@@ -65,17 +65,17 @@ function timer() {
 
     if(m.innerHTML == 0 && s.innerHTML == 0){
         if(cmpt_cycle % 2 == 0){
-            m.innerHTML = pm;
+            m.innerHTML =  pm;
             s.innerHTML = "00";
             ts.innerHTML = "Repos";
             ts.style.color = "blue"
-            cmpt_cycle++;
+            cmpt_cycle++; /* INCREMENTATION DU COMPTEUR A CHAQUE CHANGEMENT DE SESSION */
         } else {
             m.innerHTML = wm;
             s.innerHTML = "00";
             ts.innerHTML = "Travail";
             ts.style.color = "green"
-            cmpt_cycle++;
+            cmpt_cycle++; /* INCREMENTATION DU COMPTEUR A CHAQUE CHANGEMENT DE SESSION */
         }
         cycle.innerHTML = cmpt_cycle;
         
@@ -101,9 +101,5 @@ function getValue(){
 
     pm = pm.value;
     wm = wm.value;
-
-    if(pm == null || wm == null){
-        alert("Vous devez rentrez 2 valeurs !")
-    }
 }
 
