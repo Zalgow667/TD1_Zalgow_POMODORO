@@ -140,12 +140,15 @@ footer {
     margin: 0 auto; 
 }
 
-
 /* Style pour le lien GitHub avec l'id "mon_github" */
 #mon_github {
     text-decoration: none;
     color: #DDD9D9;
     font-weight: bold;
+}
+
+#mon_github:hover {
+    color: #4875b5;    
 }
 
 /* Appliquez la classe d'animation au texte qui clignote */
