@@ -31,6 +31,8 @@ body {
 #cycle {
     margin-top: 0.5em;
     margin-bottom: 2em;
+    font-weight: bold;
+    font-size: 1.1em;
 }
 
 #timer{
@@ -138,6 +140,7 @@ footer {
     text-decoration: none;
     color: #334861;
     font-weight: bold;
+    text-decoration: underline;
 }
 
 #mon_github:hover {

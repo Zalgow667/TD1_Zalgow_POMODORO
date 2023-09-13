@@ -20,8 +20,8 @@ let startTimer;
 let isSend = false;
 let cmpt_cycle = 0; // Compteur de cycle
 showChoice.style.visibility = "hidden"; // S'affiche quand le timer est lancer
-titleProgressBar.style.visibility = "hidden"
-containerProgressBar.style.visibility = "hidden"
+titleProgressBar.style.visibility = "hidden";
+containerProgressBar.style.visibility = "hidden";
 
 /* ------ TEST ------ */
 
@@ -37,12 +37,13 @@ pmInput.value = savedPm;
 wmInput.value = savedWm;
 
 m.innerHTML = savedWm;
+document.title = savedWm + " : 00 - Pomodoro en JS !";
 
 /* ------------------ */
 
 if (cmpt_cycle === 0 && !isSend) {
     ts.innerHTML = "Rien";
-    ts.style.backgroundColor = "gray"
+    ts.style.backgroundColor = "gray";
 } 
 
 // Récupérer les valeurs des champs d'entrée depuis le stockage local au chargement de la page 
@@ -65,7 +66,7 @@ start.addEventListener('click', () => {
         ts.innerHTML = "Rien";
     } else {
         ts.innerHTML = "Travail";
-        ts.style.backgroundColor = "red"
+        ts.style.backgroundColor = "red";
     }
 
     if (isSend == false) {
@@ -97,43 +98,43 @@ start.addEventListener('click', () => {
 });
 
 document.addEventListener('keydown', () => {
-    // Vérifie si la touche appuyée est la barre d'espace (code 32)
+    // Vérifie si la touche appuyé est la barre d'espace (code 32)
     if (event.keyCode === 32) {
         event.preventDefault(); // Empêche le défilement de la page lors de l'appui sur la barre d'espace
 
-           // Si le compteur de cycle est à 0 ou s'il n'y a aucun cycle, affiche "rien" dans le type de session
-    if (cmpt_cycle === 0 && !isSend) {
-        ts.innerHTML = "Rien";
-    } else {
-        ts.innerHTML = "Travail";
-        ts.style.backgroundColor = "red"
-    }
-
-    if (isSend == false) {
-        alert('Vous devez envoyer vos valeurs !');
-    } else {
-        showChoice.style.visibility = "visible";
-        choix.style.visibility = "hidden";
-        sendValue.style.visibility = "hidden";
-        showMinutesChoiceP.innerHTML = pmInput.value;
-        showMinutesChoiceW.innerHTML = wmInput.value;
-
-        if (startTimer === undefined) {
-            startTimer = setInterval(timer, 1000); // Utilisation de 1000ms pour chaque seconde
-            start.innerHTML = "reset";
+        // Si le compteur de cycle est à 0 ou s'il n'y a aucun cycle, affiche "rien" dans le type de session
+        if (cmpt_cycle === 0 && !isSend) {
+            ts.innerHTML = "Rien";
+        } else {
+            ts.innerHTML = "Travail";
+            ts.style.backgroundColor = "red"
         }
 
-        // Change le boutton start en reset
-        if (start.innerHTML == "reset") {
-            start.addEventListener('click', () => {
-                resetTimer();
-            });
-        }
-    }
+        if (isSend == false) {
+            alert('Vous devez envoyer vos valeurs !');
+        } else {
+            showChoice.style.visibility = "visible";
+            choix.style.visibility = "hidden";
+            sendValue.style.visibility = "hidden";
+            showMinutesChoiceP.innerHTML = pmInput.value;
+            showMinutesChoiceW.innerHTML = wmInput.value;
 
-    titleProgressBar.style.marginTop = "1em";
-    titleProgressBar.style.visibility = "visible";
-    containerProgressBar.style.visibility = "visible"
+            if (startTimer === undefined) {
+                startTimer = setInterval(timer, 1000); // Utilisation de 1000ms pour chaque seconde
+                start.innerHTML = "reset";
+            }
+
+            // Change le boutton start en reset
+            if (start.innerHTML == "reset") {
+                start.addEventListener('click', () => {
+                    resetTimer();
+                });
+            }
+        }
+
+        titleProgressBar.style.marginTop = "1em";
+        titleProgressBar.style.visibility = "visible";
+        containerProgressBar.style.visibility = "visible"
     }
 });
 
