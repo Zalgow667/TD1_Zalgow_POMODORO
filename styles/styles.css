@@ -184,7 +184,7 @@ footer {
 }
 
 /* Style pour les écrans de petite taille (max-width: 700px) */
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 850px) {
       /* Ajustement du style pour le titre */
       #title{
         margin-top: 15px;
@@ -197,7 +197,23 @@ footer {
         margin-top: 20px;
       }
 
+      /* Rend le footer invisible */
       footer {
+        display: none;
+      }
+}
+
+@media screen and (max-width : 350px) {
+    #type_session {
+        margin: 0;
+        padding: 0;
+        border: none;
+
+    }
+}
+
+@media screen and (max-height: 820px) {
+    footer {
         display: none;
       }
 }

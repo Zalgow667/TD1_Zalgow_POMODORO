@@ -1,5 +1,4 @@
 // Sélection des éléments HTML par leur ID
-
 const m = document.getElementById('minutes');
 const s = document.getElementById('secondes');
 const pmInput = document.getElementById('choixMinutesP');
@@ -23,6 +22,14 @@ let cmpt_cycle = 0; // Compteur de cycle
 showChoice.style.visibility = "hidden"; // S'affiche quand le timer est lancer
 titleProgressBar.style.visibility = "hidden"
 containerProgressBar.style.visibility = "hidden"
+/* ------ TEST ------ */
+
+wmInput.addEventListener('change', () => {
+    m.innerHTML = wmInput.value;
+    document.title = wmInput.value + " : 00 - Pomodoro Timer"
+});
+
+/* ------------------ */
 
 if (cmpt_cycle === 0 && !isSend) {
     ts.innerHTML = "rien";
@@ -41,7 +48,6 @@ window.addEventListener('load', () => {
 });
 
 // Ajout d'un écouteur a ma constante start, lance le pomdoro en cas de clique
-
 start.addEventListener('click', () => {
 
     // Si le compteur de cycle est à 0 ou s'il n'y a aucun cycle, affiche "rien" dans le type de session
@@ -62,7 +68,7 @@ start.addEventListener('click', () => {
         showMinutesChoiceW.innerHTML = wmInput.value;
 
         if (startTimer === undefined) {
-            startTimer = setInterval(timer, 10); // Utilisation de 1000ms pour chaque seconde
+            startTimer = setInterval(timer, 1000); // Utilisation de 1000ms pour chaque seconde
             start.innerHTML = "reset";
         }
 
@@ -130,7 +136,6 @@ function timer() {
     let formattedSecondes = secondes.toString().padStart(2, '0');
 
     // Met à jour le titre de la page quand le timer avance
-
     document.title = `${formattedMinutes} : ${formattedSecondes} - Pomodoro !`
 
     // Mettre à jour les éléments HTML
@@ -193,7 +198,6 @@ function timer() {
 }
 
 //  Fonction servant à raffraichir la page
-
 function resetTimer() {
     // Effacer les valeurs stockées dans le localStorage lorsque vous réinitialisez le timer
     localStorage.removeItem('choixMinutesP');
