@@ -18,7 +18,7 @@
         <p id="cycle">Vous avez fait <span id="nb_cycle">0</span><span id="pluriel"> cycle</span></p>
 
         <div id="timer">
-            <p id="minutes">25</p><p id="semicolon">:</p><p id="secondes">00</p>
+            <h2><span id="minutes">25</span><span id="semicolon">:</span><span id="secondes">00</span></h2>
         </div>
     
         <div class="circle"></div>
@@ -26,11 +26,11 @@
         <button id="start" onclick="getValue();">start</button>
 
         <div id="choix">
-            <p class="choiceUser">Temps de travail :</p>
+            <label for="choixMinutesT" class="choiceUser">Temps de travail :</label>
             <input type="number" placeholder="Entrez une valeur ici" id="choixMinutesT" value="25">
-            <p class="choiceUser">Temps de repos :</p>
+            <label for="choixMinutesP" class="choiceUser">Temps de repos :</label>
             <input type="number" placeholder="Entrez une valeur ici" id="choixMinutesP" value="5">
-        </div>
+        </div>        
         
         <button type="button" id="confirm" onclick="getValue();">Envoyer les temps</button>
         <p id="showChoice">Vous avez choisit : <span id="temps_work"></span> minutes de travail et <span id="temps_pause"></span> minutes de pause</p>
@@ -44,7 +44,7 @@
         </div>
 
         <footer>
-            <p>Crée par <a href="https://github.com/Zalgow667" target="_blank" id="mon_github">Zalgow667</a> - étudiant en BUT2 Info - 2023</p>
+            <p>Crée par <a href="https://github.com/Zalgow667" target="_blank" id="mon_github">Zalgow667</a> - 2023</p>
         </footer>
 
         <script src="./scripts/app.js"></script>

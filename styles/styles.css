@@ -16,8 +16,8 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: #FFFFFF;
-    background-color: tomato;
+    color: black;
+    background-color: #FF5F42;
 }
 
 #title {
@@ -49,7 +49,7 @@ body {
     border: solid white 5px;
     border-radius: 50%;
     padding: 5em;
-    margin-top: -10em;
+    margin-top: -10.5em;
     margin-bottom: 1em;
     box-shadow: 0 0 10px black;
 }
@@ -81,20 +81,24 @@ button:active {
     transform: translateY(2px);
 }
 
-.choix {
-    padding-top: 2em;
+#choix {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
+
+.choiceUser {
+    margin-bottom: 10px;
+    margin-top: 1em;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
 
 #confirm {
     margin: 1em;
     visibility: hidden;
 } 
-
-p.choix {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
   
 input[type="number"] {
     width: 100px;
@@ -102,13 +106,8 @@ input[type="number"] {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
-}
-
-.choiceUser {
-    font-size: 18px;
-    font-weight: bold;
-    margin-top: 20px;
-    margin-bottom: 10px;
+    margin-left: 1.3em;
+    border: 1.5px solid black; 
 }
   
 #showChoice {
@@ -120,29 +119,29 @@ input[type="number"] {
     background-color: red;
     padding: 10px 2em 10px 2em;
     margin-left: .2em;
+    color: white;
 }
 
 footer {
-    border-top: solid white 3px;
-    color: #FFFFFF; 
-    text-align: center; 
-    padding: .7em; 
+    text-align: center;
     position: absolute;
     bottom: 0;
     width: 100%;
+    padding: .7em;
     font-size: 1.25em;
-    max-width: 25%; 
-    margin: 0 auto; 
+    margin: 0 auto;
+    border-top: solid white 10px;
+    border-image: linear-gradient(to right, transparent, white 50%, transparent) 1; 
 }
 
 #mon_github {
     text-decoration: none;
-    color: #DDD9D9;
+    color: #334861;
     font-weight: bold;
 }
 
 #mon_github:hover {
-    color: #4875b5;    
+    color: #fafafa;
 }
 
 /* Application de l'animation de clignotement */
@@ -175,7 +174,7 @@ footer {
     transform: translate(-50%, -50%);
     color: white;
     text-shadow: 2px 2px black;
-    margin-left: 15px;
+    margin-left: 25px;
 }
 
 #progress-bar-title {
@@ -196,7 +195,7 @@ footer {
 }
 
 /* Style pour les écrans de petite taille (max-width: 700px) */
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 500px) {
       /* Ajustement du style pour le titre */
       #title{
         margin-top: 15px;
@@ -207,11 +206,6 @@ footer {
       #session{
         font-size: 1em;
         margin-top: 20px;
-      }
-
-      /* Rend le footer invisible */
-      footer {
-        display: none;
       }
 }
 
@@ -224,7 +218,7 @@ footer {
     }
 }
 
-@media screen and (max-height: 820px) {
+@media screen and (max-height: 725px) {
     footer {
         display: none;
       }
