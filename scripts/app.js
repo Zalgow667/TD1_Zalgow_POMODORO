@@ -30,6 +30,14 @@ wmInput.addEventListener('change', () => {
     document.title = wmInput.value + " : 00 - Pomodoro Timer"
 });
 
+const savedPm = localStorage.getItem('choixMinutesP') || '5';
+const savedWm = localStorage.getItem('choixMinutesT') || '25';
+
+pmInput.value = savedPm;
+wmInput.value = savedWm;
+
+m.innerHTML = savedWm;
+
 /* ------------------ */
 
 if (cmpt_cycle === 0 && !isSend) {
@@ -213,8 +221,6 @@ function timer() {
 //  Fonction servant à raffraichir la page
 function resetTimer() {
     // Effacer les valeurs stockées dans le localStorage lorsque vous réinitialisez le timer
-    localStorage.removeItem('choixMinutesP');
-    localStorage.removeItem('choixMinutesT');
     location.reload();
 }
 
