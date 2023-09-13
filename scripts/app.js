@@ -22,6 +22,7 @@ let cmpt_cycle = 0; // Compteur de cycle
 showChoice.style.visibility = "hidden"; // S'affiche quand le timer est lancer
 titleProgressBar.style.visibility = "hidden"
 containerProgressBar.style.visibility = "hidden"
+
 /* ------ TEST ------ */
 
 wmInput.addEventListener('change', () => {
@@ -32,7 +33,8 @@ wmInput.addEventListener('change', () => {
 /* ------------------ */
 
 if (cmpt_cycle === 0 && !isSend) {
-    ts.innerHTML = "rien";
+    ts.innerHTML = "Rien";
+    ts.style.backgroundColor = "gray"
 } 
 
 // Récupérer les valeurs des champs d'entrée depuis le stockage local au chargement de la page 
@@ -52,10 +54,10 @@ start.addEventListener('click', () => {
 
     // Si le compteur de cycle est à 0 ou s'il n'y a aucun cycle, affiche "rien" dans le type de session
     if (cmpt_cycle === 0 && !isSend) {
-        ts.innerHTML = "rien";
+        ts.innerHTML = "Rien";
     } else {
         ts.innerHTML = "Travail";
-        ts.style.color = "green"
+        ts.style.backgroundColor = "red"
     }
 
     if (isSend == false) {
@@ -93,10 +95,10 @@ document.addEventListener('keydown', () => {
 
            // Si le compteur de cycle est à 0 ou s'il n'y a aucun cycle, affiche "rien" dans le type de session
     if (cmpt_cycle === 0 && !isSend) {
-        ts.innerHTML = "rien";
+        ts.innerHTML = "Rien";
     } else {
         ts.innerHTML = "Travail";
-        ts.style.color = "green"
+        ts.style.backgroundColor = "red"
     }
 
     if (isSend == false) {
@@ -169,11 +171,11 @@ function timer() {
         if (cmpt_cycle % 2 === 0) {
             formattedMinutes = pm.toString().padStart(2, '0');
             ts.innerHTML = "Repos";
-            ts.style.color = "blue";
+            ts.style.backgroundColor = "green"
         } else {
             formattedMinutes = wm.toString().padStart(2, '0');
             ts.innerHTML = "Travail";
-            ts.style.color = "green";
+            ts.style.backgroundColor = "red"
         }
         
         // Incrémente et met à jour le compteur
