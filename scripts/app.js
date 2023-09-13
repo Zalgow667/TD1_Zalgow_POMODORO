@@ -91,28 +91,39 @@ document.addEventListener('keydown', () => {
     if (event.keyCode === 32) {
         event.preventDefault(); // Empêche le défilement de la page lors de l'appui sur la barre d'espace
 
-        // Votre code pour lancer le timer ici
-        if (isSend == false) {
-            alert('Vous devez envoyer vos valeurs !');
-        } else {
-            showChoice.style.visibility = "visible";
-            choix.style.visibility = "hidden";
-            sendValue.style.visibility = "hidden";
-            showMinutesChoiceP.innerHTML = pmInput.value;
-            showMinutesChoiceW.innerHTML = wmInput.value;
+           // Si le compteur de cycle est à 0 ou s'il n'y a aucun cycle, affiche "rien" dans le type de session
+    if (cmpt_cycle === 0 && !isSend) {
+        ts.innerHTML = "rien";
+    } else {
+        ts.innerHTML = "Travail";
+        ts.style.color = "green"
+    }
 
-            if (startTimer === undefined) {
-                startTimer = setInterval(timer, 1000); // Utilisation de 1000ms pour chaque seconde
-                start.innerHTML = "reset";
-            }
+    if (isSend == false) {
+        alert('Vous devez envoyer vos valeurs !');
+    } else {
+        showChoice.style.visibility = "visible";
+        choix.style.visibility = "hidden";
+        sendValue.style.visibility = "hidden";
+        showMinutesChoiceP.innerHTML = pmInput.value;
+        showMinutesChoiceW.innerHTML = wmInput.value;
 
-            // Change le bouton start en reset
-            if (start.innerHTML == "reset") {
-                start.addEventListener('click', () => {
-                    resetTimer();
-                });
-            }
+        if (startTimer === undefined) {
+            startTimer = setInterval(timer, 1000); // Utilisation de 1000ms pour chaque seconde
+            start.innerHTML = "reset";
         }
+
+        // Change le boutton start en reset
+        if (start.innerHTML == "reset") {
+            start.addEventListener('click', () => {
+                resetTimer();
+            });
+        }
+    }
+
+    titleProgressBar.style.marginTop = "1em";
+    titleProgressBar.style.visibility = "visible";
+    containerProgressBar.style.visibility = "visible"
     }
 });
 
@@ -233,6 +244,5 @@ function getValue() {
         alert('Veuillez entrer des valeurs numériques valides.');
     }
 }
-
 
 
