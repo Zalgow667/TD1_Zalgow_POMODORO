@@ -66,7 +66,7 @@ start.addEventListener('click', () => {
         ts.innerHTML = "Rien";
     } else {
         ts.innerHTML = "Travail";
-        ts.style.backgroundColor = "red";
+        ts.style.backgroundColor = "#CC0000";
     }
 
     if (isSend == false) {
@@ -107,7 +107,7 @@ document.addEventListener('keydown', () => {
             ts.innerHTML = "Rien";
         } else {
             ts.innerHTML = "Travail";
-            ts.style.backgroundColor = "red"
+            ts.style.backgroundColor = "#CC0000"
         }
 
         if (isSend == false) {
@@ -184,7 +184,7 @@ function timer() {
         } else {
             formattedMinutes = wm.toString().padStart(2, '0');
             ts.innerHTML = "Travail";
-            ts.style.backgroundColor = "red"
+            ts.style.backgroundColor = "#CC0000"
         }
         
         // Incrémente et met à jour le compteur
