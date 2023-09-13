@@ -1,18 +1,23 @@
+/* Importer la police Roboto depuis Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100&display=swap');
+
+/* Réinitialiser les styles par défaut pour tous les éléments */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
 }
 
+/* Style pour l'ensemble de la page */
 body {
-    font-family: Arial, sans-serif;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: white;
-    background-color: rgb(71, 26, 68);
+    color: black;
+    background-color: #FF5F42;
 }
 
 #title {
@@ -26,6 +31,8 @@ body {
 #cycle {
     margin-top: 0.5em;
     margin-bottom: 2em;
+    font-weight: bold;
+    font-size: 1.1em;
 }
 
 #timer{
@@ -37,33 +44,198 @@ body {
 #minutes, #secondes, #semicolon {
     font-size: 2em;
     font-weight: bold;
-    color: rgb(255, 255, 255);
+    color: #FFFFFF;
 }
   
 .circle {
     border: solid white 5px;
     border-radius: 50%;
     padding: 5em;
-    margin-top: -10em;
+    margin-top: -10.5em;
     margin-bottom: 1em;
+    box-shadow: 0 0 10px black;
 }
 
 #minutes, #secondes {
     margin: 0 5px;
 }
- 
+
 button {
     padding: 10px 20px;
     font-size: 1.2rem;
-    background-color: rgb(60, 0, 255);
-    color: #fff;
-    border: none;
+    background-color: #4875b5;
+    border: 1.5px solid black; 
+    color: #FFFFFF;
     border-radius: 5px;
     cursor: pointer;
     margin: 5px;
+    transition: box-shadow 0.3s;
 }
-  
+
 button:hover {
-    background-color: #00ff4c;
+    background-color: rgb(71, 202, 160);
+    box-shadow: 5px 5px 10px rgb(2, 63, 43); 
+}
+
+button:active {
+    background-color: rgb(33, 77, 123); 
+    box-shadow: none;
+    transform: translateY(2px);
+}
+
+#choix {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.choiceUser {
+    margin-bottom: 10px;
+    margin-top: 1em;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+
+#confirm {
+    margin: 1em;
+    visibility: hidden;
+} 
+  
+input[type="number"] {
+    width: 100px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-left: 1.3em;
+    border: 1.5px solid black; 
 }
   
+#showChoice {
+    margin-top: -15.5em;
+}
+
+#type_session {
+    border: solid black 4px;
+    background-color: red;
+    padding: 10px 2em 10px 2em;
+    margin-left: .2em;
+    color: white;
+}
+
+footer {
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: .7em;
+    font-size: 1.25em;
+    margin: 0 auto;
+    border-top: solid white 10px;
+    border-image: linear-gradient(to right, transparent, white 50%, transparent) 1; 
+}
+
+#mon_github {
+    text-decoration: none;
+    color: #334861;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+#mon_github:hover {
+    color: #fafafa;
+}
+
+/* Application de l'animation de clignotement */
+.blinking-text {
+    animation: blink .5s infinite;
+}
+
+#progress-bar-container {
+    width: 75%;
+    background-color: #ccc;
+    height: 20px;
+    margin-top: 2em;
+    border-radius: 10px;
+    box-shadow: 0 0 10px black;
+}
+  
+#progress-bar {
+    width: 0;
+    height: 100%;
+    background-color: #2C632E;
+    transition: width 1s linear;
+    position: relative;
+    border-radius: 10px;
+}
+  
+#progress-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-shadow: 2px 2px black;
+    margin-left: 25px;
+}
+
+#progress-bar-title {
+    margin-top: 13em;
+}
+
+#text_outil {
+    border-top: 2px solid white;
+    max-width: 50%;
+    margin-top: 1em;
+    padding-top: 1em;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+#accelererTemps {
+    margin-top: 1em;
+}
+
+/* Animation de clignotement */
+@keyframes blink {
+    0% {
+        color: red;
+    }
+    50% {
+        color: white;
+    }
+    100% {
+        color: red;
+    }
+}
+
+/* Style pour les écrans de petite taille (max-width: 700px) */
+@media screen and (max-width: 500px) {
+      /* Ajustement du style pour le titre */
+      #title{
+        margin-top: 15px;
+        font-size: 1.2em;
+      }
+    
+      /* Ajustement du style pour la session */
+      #session{
+        font-size: 1em;
+        margin-top: 20px;
+      }
+}
+
+@media screen and (max-width : 350px) {
+    #type_session {
+        margin: 0;
+        padding: 0;
+        border: none;
+
+    }
+}
+
+@media screen and (max-height: 800px) {
+    footer {
+        display: none;
+      }
+}

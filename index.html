@@ -4,20 +4,56 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="./styles/styles.css">
-        <title>Document</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <link rel="shortcut icon" type="image/png" href="images/logo.png">
+
+        <title>xx : xx - Pomodoro en JS !</title>
     </head>
-    <body>
+    <body id="app">
         <h1 id="title">TIMER POMODORO</h1>
-        <h2 id="session">Vous êtes en session de <span id="type_session">Travail</span></h2>
-        <p id="cycle">Vous avez fait <span id="nb_cycle">0</span><span id="pluriel"> cycle</span></p>
+        <h2 id="session">Vous êtes en session de : <span id="type_session"></span></h2>
+        <h3 id="cycle">Vous avez fait <span id="nb_cycle">0</span><span id="pluriel"> cycle</span></h3>
 
         <div id="timer">
-            <p id="minutes">25</p><p id="semicolon">:</p><p id="secondes">00</p>
+            <h2><span id="minutes"></span><span id="semicolon">:</span><span id="secondes">00</span></h2>
         </div>
     
         <div class="circle"></div>
 
-        <button id="start">start</button>
+        <button id="start" onclick="getValue();">start</button>
+
+        <div id="choix">
+            <label for="choixMinutesT" class="choiceUser">Temps de travail :</label>
+            <input type="number" placeholder="Entrez une valeur ici" id="choixMinutesT" value="25">
+            <label for="choixMinutesP" class="choiceUser">Temps de repos :</label>
+            <input type="number" placeholder="Entrez une valeur ici" id="choixMinutesP" value="5">
+        </div>        
+        
+        <button type="button" id="confirm" onclick="getValue();">Envoyer les temps</button>
+        <p id="showChoice">Vous avez choisit : <span id="temps_work"></span> minutes de travail et <span id="temps_pause"></span> minutes de pause</p>
+        
+        <h3 id="progress-bar-title">Barre de progression du timer :</h3>
+        
+        <div id="progress-bar-container">
+            <div id="progress-bar">
+              <span id="progress-text">0%</span>
+            </div>
+        </div>
+
+        <div id="text_outil">
+            <p id="texteCliquable">Outil potentiellement utile ! </p>
+            <div id="boutons" style="display: none;">
+                <button id="accelererTemps">10 secondes timer</button>
+                <button id="jouerMusique">Jouer de la musique</button>
+            </div>
+        </div>
+
+        <footer>
+            <p>Crée par <a href="https://github.com/Zalgow667" target="_blank" id="mon_github">Zalgow667</a> - 2023</p>
+        </footer>
 
         <script src="./scripts/app.js"></script>
     </body>
