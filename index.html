@@ -27,9 +27,9 @@
 
         <div id="choix">
             <label for="choixMinutesT" class="choiceUser">Temps de travail :</label>
-            <input type="number" placeholder="Entrez une valeur ici" id="choixMinutesT" value="25">
+            <input type="number" placeholder="Entrez une valeur ici" id="choixMinutesT" value="25" min=0>
             <label for="choixMinutesP" class="choiceUser">Temps de repos :</label>
-            <input type="number" placeholder="Entrez une valeur ici" id="choixMinutesP" value="5">
+            <input type="number" placeholder="Entrez une valeur ici" id="choixMinutesP" value="5" min=0>
         </div>        
         
         <button type="button" id="confirm" onclick="getValue();">Envoyer les temps</button>
