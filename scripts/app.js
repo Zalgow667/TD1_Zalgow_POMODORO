@@ -255,6 +255,7 @@ function getValue() {
         // Réinitialisez les champs d'entrée avec des valeurs par défaut ou vides si les entrées sont incorrectes
         pmInput.value = '5'; // Valeur par défaut
         wmInput.value = '25'; // Valeur par défaut
+        break;
     }
 }
 
