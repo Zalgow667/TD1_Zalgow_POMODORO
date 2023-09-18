@@ -235,29 +235,26 @@ function getValue() {
     // Récupère les valeurs des inputs
     const pmValue = parseInt(pmInput.value);
     const wmValue = parseInt(wmInput.value);
-    
-    if(wmValue >= 1){
-        m.innerHTML = wmValue;
-    }
 
-    // Utilisez Math.max pour vous assurer que les valeurs sont positives
-    const positivePmValue = Math.max(1, pmValue);
-    const positiveWmValue = Math.max(1, wmValue);
-
-    // Vérifier si les valeurs sont numériques avant de les stocker
-    if (!isNaN(pmValue) && !isNaN(wmValue)) {
+    // Vérifier si les valeurs sont des nombres entiers positifs
+    if (!isNaN(pmValue) && pmValue >= 0 && Number.isInteger(pmValue) &&
+        !isNaN(wmValue) && wmValue >= 0 && Number.isInteger(wmValue)) {
         // Stocker les valeurs positives dans le localStorage
-        localStorage.setItem('choixMinutesP', positivePmValue.toString());
-        localStorage.setItem('choixMinutesT', positiveWmValue.toString());
+        localStorage.setItem('choixMinutesP', pmValue.toString());
+        localStorage.setItem('choixMinutesT', wmValue.toString());
         isSend = true;
-        
+
         // Mettre à jour les champs d'entrée avec les valeurs positives
-        pmInput.value = positivePmValue.toString();
-        wmInput.value = positiveWmValue.toString();
+        pmInput.value = pmValue.toString();
+        wmInput.value = wmValue.toString();
+
+        // Mettre à jour l'affichage
+        m.innerHTML = wmValue;
     } else {
-        alert('Veuillez entrer des valeurs numériques valides.');
+        alert('Veuillez entrer des nombres entiers positifs.');
     }
 }
+
 
 const texteCliquable = document.getElementById('texteCliquable');
 const texteOutil = document.getElementById('text_outil');
