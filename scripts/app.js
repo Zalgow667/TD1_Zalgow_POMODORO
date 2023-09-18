@@ -61,7 +61,7 @@ window.addEventListener('load', () => {
 
 // Ajout d'un écouteur a ma constante start, lance le pomdoro en cas de clique
 start.addEventListener('click', () => {
-    if(estOk){
+    if(pmValue >= 0 && wmValue >= 0 && estOk){
         // Récupérez les valeurs des champs d'entrée
         const pmValue = parseInt(pmInput.value);
         const wmValue = parseInt(wmInput.value);
