@@ -252,9 +252,11 @@ function getValue() {
         m.innerHTML = wmValue;
     } else {
         alert('Veuillez entrer des nombres entiers positifs.');
+        // Réinitialisez les champs d'entrée avec des valeurs par défaut ou vides si les entrées sont incorrectes
+        pmInput.value = '5'; // Valeur par défaut
+        wmInput.value = '25'; // Valeur par défaut
     }
 }
-
 
 const texteCliquable = document.getElementById('texteCliquable');
 const texteOutil = document.getElementById('text_outil');
