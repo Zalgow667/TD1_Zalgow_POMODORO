@@ -101,6 +101,8 @@ start.addEventListener('click', () => {
         containerProgressBar.style.visibility = "visible";
         texteCliquable.style.visibility = "visible";
         texteOutil.style.visibility = "visible";
+    } else {
+        alert('Il y a une erreur dans votre saisie !');
     }
 });
 
@@ -143,6 +145,8 @@ document.addEventListener('keydown', () => {
         containerProgressBar.style.visibility = "visible";
         texteCliquable.style.visibility = "visible";
         texteOutil.style.visibility = "visible";
+    } else {
+        alert('Il y a une erreur dans votre saisie !');
     }
 });
 
