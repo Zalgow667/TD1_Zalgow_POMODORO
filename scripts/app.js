@@ -253,7 +253,7 @@ function getValue() {
     } else {
         pmInput.value = '5'; 
         wmInput.value = '25'; 
-        alert('Veuillez entrer des nombres entiers positifs.');
+        alert('Veuillez entrer des nombres entiers positifs !');
     }
 }
 
