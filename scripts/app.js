@@ -60,43 +60,50 @@ window.addEventListener('load', () => {
 
 // Ajout d'un écouteur a ma constante start, lance le pomdoro en cas de clique
 start.addEventListener('click', () => {
+    // Récupérez les valeurs des champs d'entrée
+    const pmValue = parseInt(pmInput.value);
+    const wmValue = parseInt(wmInput.value);
 
-    // Si le compteur de cycle est à 0 ou s'il n'y a aucun cycle, affiche "rien" dans le type de session
-    if (cmpt_cycle === 0 && !isSend) {
-        ts.innerHTML = "Rien";
-    } else {
-        ts.innerHTML = "Travail";
-        ts.style.backgroundColor = "#CC0000";
-    }
-
-    if (isSend == false) {
-        alert('Vous devez envoyer vos valeurs !');
-    } else {
-        showChoice.style.visibility = "visible";
-        choix.style.visibility = "hidden";
-        sendValue.style.visibility = "hidden";
-        showMinutesChoiceP.innerHTML = pmInput.value;
-        showMinutesChoiceW.innerHTML = wmInput.value;
-
-        if (startTimer === undefined) {
-            startTimer = setInterval(timer, 1000); // Utilisation de 1000ms pour chaque seconde
-            start.innerHTML = "reset";
+    // Vérifiez si les valeurs sont positives
+    if (pmValue >= 0 && wmValue >= 0) {
+        // Si le compteur de cycle est à 0 ou s'il n'y a aucun cycle, affiche "rien" dans le type de session
+        if (cmpt_cycle === 0 && !isSend) {
+            ts.innerHTML = "Rien";
+        } else {
+            ts.innerHTML = "Travail";
+            ts.style.backgroundColor = "#CC0000";
         }
 
-        // Change le boutton start en reset
-        if (start.innerHTML == "reset") {
-            start.addEventListener('click', () => {
-                resetTimer();
-            });
+        if (isSend == false) {
+            alert('Vous devez envoyer vos valeurs !');
+        } else {
+            showChoice.style.visibility = "visible";
+            choix.style.visibility = "hidden";
+            sendValue.style.visibility = "hidden";
+            showMinutesChoiceP.innerHTML = pmValue;
+            showMinutesChoiceW.innerHTML = wmValue;
+
+            if (startTimer === undefined) {
+                startTimer = setInterval(timer, 1000); // Utilisation de 1000ms pour chaque seconde
+                start.innerHTML = "reset";
+            }
+
+            // Change le bouton start en reset
+            if (start.innerHTML == "reset") {
+                start.addEventListener('click', () => {
+                    resetTimer();
+                });
+            }
         }
+
+        titleProgressBar.style.marginTop = "1em";
+        titleProgressBar.style.visibility = "visible";
+        containerProgressBar.style.visibility = "visible";
+        texteCliquable.style.visibility = "visible";
+        texteOutil.style.visibility = "visible";
+    } else {
+        alert('Veuillez entrer des valeurs numériques positives ou nulles.');
     }
-
-    titleProgressBar.style.marginTop = "1em";
-    titleProgressBar.style.visibility = "visible";
-    containerProgressBar.style.visibility = "visible";
-    texteCliquable.style.visibility = "visible";
-    texteOutil.style.visibility = "visible";
-
 });
 
 document.addEventListener('keydown', () => {
