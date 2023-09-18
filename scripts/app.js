@@ -251,11 +251,9 @@ function getValue() {
         // Mettre à jour l'affichage
         m.innerHTML = wmValue;
     } else {
+        pmInput.value = '5'; 
+        wmInput.value = '25'; 
         alert('Veuillez entrer des nombres entiers positifs.');
-        // Réinitialisez les champs d'entrée avec des valeurs par défaut ou vides si les entrées sont incorrectes
-        pmInput.value = '5'; // Valeur par défaut
-        wmInput.value = '25'; // Valeur par défaut
-        break;
     }
 }
 
