@@ -111,12 +111,18 @@ document.addEventListener('keydown', () => {
     if (event.keyCode === 32) {
         event.preventDefault(); // Empêche le défilement de la page lors de l'appui sur la barre d'espace
 
+    // Récupérez les valeurs des champs d'entrée
+    const pmValue = parseInt(pmInput.value);
+    const wmValue = parseInt(wmInput.value);
+
+    // Vérifiez si les valeurs sont positives
+    if (pmValue >= 0 && wmValue >= 0) {
         // Si le compteur de cycle est à 0 ou s'il n'y a aucun cycle, affiche "rien" dans le type de session
         if (cmpt_cycle === 0 && !isSend) {
             ts.innerHTML = "Rien";
         } else {
             ts.innerHTML = "Travail";
-            ts.style.backgroundColor = "#CC0000"
+            ts.style.backgroundColor = "#CC0000";
         }
 
         if (isSend == false) {
@@ -125,15 +131,15 @@ document.addEventListener('keydown', () => {
             showChoice.style.visibility = "visible";
             choix.style.visibility = "hidden";
             sendValue.style.visibility = "hidden";
-            showMinutesChoiceP.innerHTML = pmInput.value;
-            showMinutesChoiceW.innerHTML = wmInput.value;
+            showMinutesChoiceP.innerHTML = pmValue;
+            showMinutesChoiceW.innerHTML = wmValue;
 
             if (startTimer === undefined) {
                 startTimer = setInterval(timer, 1000); // Utilisation de 1000ms pour chaque seconde
                 start.innerHTML = "reset";
             }
 
-            // Change le boutton start en reset
+            // Change le bouton start en reset
             if (start.innerHTML == "reset") {
                 start.addEventListener('click', () => {
                     resetTimer();
@@ -146,6 +152,8 @@ document.addEventListener('keydown', () => {
         containerProgressBar.style.visibility = "visible";
         texteCliquable.style.visibility = "visible";
         texteOutil.style.visibility = "visible";
+    } else {
+        alert('Veuillez entrer des valeurs numériques positives ou nulles.');
     }
 });
 
