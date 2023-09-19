@@ -240,7 +240,7 @@ function timer() {
         s.innerHTML = "00"; // Réinitialiser les secondes à 00
     }
 
-    if(minutes == 0 && secondes == 1){
+    if(minutes == 0 && secondes == 0){
         sonnerCloche();
     }
 
