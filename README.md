@@ -27,6 +27,6 @@ Le Pomodoro Timer est une application de gestion du temps basée sur la techniqu
 
 ## Auteur
 
-Ce projet a été créé par - [@Zalgow667](https://www.github.com/octokatherine).
+Ce projet a été créé par - [@Zalgow667](https://www.github.com/Zalgow667).
 
 
