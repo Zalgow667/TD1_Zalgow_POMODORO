@@ -147,41 +147,61 @@ footer {
     color: #334861;
 }
 
+#text_outil {
+    margin-top: 1em;
+}
+
+#texteCliquable {
+    font-size: 1em;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 2px black;
+    font-weight: bold;
+}
+
+#texteCliquable:hover {
+    color: #4875b5;
+}
+
+#flecheDirection {
+    font-size: 1em;
+    margin-bottom: 20px;
+}
+
+#boutons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bouttons-u {
+    margin: 5px;
+    padding: 5px 10px;
+    font-size: 1em;
+    background-color: #175A87; 
+    color: #fff; 
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.bouttons-u:hover {
+    background-color: #052a42; 
+}
+
+#clocheCheckbox {
+    margin: 5px;
+}
+
+#textCheckbox {
+    margin-left: 5px;
+    margin-bottom: 1em;
+    font-size: 1em;
+}
+
 /* Application de l'animation de clignotement */
 .blinking-text {
     animation: blink .5s infinite;
-}
-
-#progress-bar-container {
-    width: 75%;
-    background-color: #ccc;
-    height: 20px;
-    margin-top: 2em;
-    border-radius: 10px;
-    box-shadow: 0 0 10px black;
-}
-  
-#progress-bar {
-    width: 0;
-    height: 100%;
-    background-color: #2C632E;
-    transition: width 1s linear;
-    position: relative;
-    border-radius: 10px;
-}
-  
-#progress-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    text-shadow: 2px 2px black;
-    margin-left: 25px;
-}
-
-#progress-bar-title {
-    margin-top: 13em;
 }
 
 body.change-background-rtog {
@@ -266,57 +286,10 @@ body.change-background-wtor {
     }
 }
 
-@media screen and (max-height: 780px) {
+@media screen and (max-height: 650px) {
     footer {
         display: none;
       }
 }
 
-/* TEMP */
-
-#text_outil {
-    margin-top: 2em;
-}
-
-#texteCliquable {
-    font-size: 1em;
-    margin-bottom: 10px;
-}
-
-#flecheDirection {
-    font-size: 1em;
-    margin-bottom: 20px;
-}
-
-#boutons {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.bouttons-u {
-    margin: 5px;
-    padding: 5px 10px;
-    font-size: 1em;
-    background-color: #175A87; 
-    color: #fff; 
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-.bouttons-u:hover {
-    background-color: #052a42; 
-}
-
-#clocheCheckbox {
-    margin: 5px;
-}
-
-#textCheckbox {
-    margin-left: 5px;
-    margin-bottom: 1em;
-    font-size: 1em;
-}
 

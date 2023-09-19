@@ -14,8 +14,6 @@ const showChoice = document.getElementById('showChoice');
 const showMinutesChoiceW = document.getElementById('temps_work');
 const showMinutesChoiceP = document.getElementById('temps_pause');
 const app = document.getElementById('app');
-const titleProgressBar = document.getElementById('progress-bar-title');
-const containerProgressBar = document.getElementById('progress-bar-container');
 const body = document.getElementsByTagName('body');
 const deleteLocalStorageButton = document.getElementById('deleteLocalStorage'); // Bouton pour supprimer les données du stockage local
 const clocheCheckbox = document.getElementById('clocheCheckbox'); // Gestion de la cloche (activation/désactivation)
@@ -39,8 +37,6 @@ let audio_music = new Audio("audio/pomodoro.mp3");
 
 // Masquer les éléments au départ
 showChoice.style.visibility = "hidden"; // S'affiche quand le timer est lancer
-titleProgressBar.style.visibility = "hidden";
-containerProgressBar.style.visibility = "hidden";
 texteOutil.style.visibility = "hidden";
 texteCliquable.style.visibility = "hidden";
 reset.style.display = "none";
@@ -138,10 +134,6 @@ start.addEventListener('click', () => {
                 reset.style.display = "initial";
             }
         }
-    
-        titleProgressBar.style.marginTop = "1em";
-        titleProgressBar.style.visibility = "visible";
-        containerProgressBar.style.visibility = "visible";
         texteCliquable.style.visibility = "visible";
         texteOutil.style.visibility = "visible";
     } else {
@@ -222,19 +214,6 @@ function timer() {
     if(minutes == 0 && secondes == 0){
         sonnerCloche();
     }
-
-    // Calculez le pourcentage de temps restant
-    const totalTime = cmpt_cycle % 2 === 0 ? wm * 60 : pm * 60; // En secondes
-    const remainingSeconds = minutes * 60 + secondes;
-    const progressPercentage = ((totalTime - remainingSeconds) / totalTime) * 100;
-
-    // Mettez à jour la largeur de la barre de progression
-    const progressBar = document.getElementById('progress-bar');
-    progressBar.style.width = `${progressPercentage}%`;
-
-    // Mettez à jour le texte du pourcentage
-    const progressText = document.getElementById('progress-text');
-    progressText.textContent = `${progressPercentage.toFixed(2)}%`;
 }
 
 // Fonction pour sonner la cloche si elle est activée
