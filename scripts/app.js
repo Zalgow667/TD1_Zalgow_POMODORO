@@ -292,19 +292,24 @@ function getValue() {
     }
 }
 
+// Sélection des éléments HTML
 const texteCliquable = document.getElementById('texteCliquable');
 const texteOutil = document.getElementById('text_outil');
 const boutons = document.getElementById('boutons');
 const accelererTemps = document.getElementById('accelererTemps');
-const jouerMusique = document.getElementById('jouerMusique')
+const jouerMusique = document.getElementById('jouerMusique');
+
+// Déclaration de variables
 let timerInterval;
 let cmpt_tmp = 0;
 
+// Masquer les éléments au départ
 texteOutil.style.visibility = "hidden";
 texteCliquable.style.visibility = "hidden";
 
+// Gestion du clic sur "texteCliquable"
 texteCliquable.addEventListener('click', () => {
-    if(cmpt_tmp % 2 == 0) {
+    if (cmpt_tmp % 2 == 0) {
         boutons.style.visibility = 'visible';
         boutons.style.display = 'block';
         document.getElementById('flecheDirection').textContent = "▲ ▲ ▲"
@@ -316,6 +321,7 @@ texteCliquable.addEventListener('click', () => {
     }
 });
 
+// Gestion de la musique
 let musiqueEnLecture = false;
 let audio_music = new Audio("audio/pomodoro.mp3");
 
@@ -331,6 +337,7 @@ jouerMusique.addEventListener('click', () => {
     }
 });
 
+// Gestion de la cloche (activation/désactivation)
 const clocheCheckbox = document.getElementById('clocheCheckbox');
 let clocheActive = false;
 
@@ -338,6 +345,7 @@ clocheCheckbox.addEventListener('change', () => {
     clocheActive = clocheCheckbox.checked;
 });
 
+// Fonction pour sonner la cloche si elle est activée
 function sonnerCloche() {
     if (clocheActive) {
         let audio_cloche = new Audio("audio/cloche.mp3");
@@ -345,6 +353,15 @@ function sonnerCloche() {
     }
 }
 
+// Bouton pour supprimer les données du stockage local
+const deleteLocalStorageButton = document.getElementById('deleteLocalStorage');
+
+deleteLocalStorageButton.addEventListener('click', () => {
+    localStorage.clear();
+    location.reload();
+});
+
+// Bouton pour accélérer le temps (minutes et secondes)
 accelererTemps.addEventListener('click', () => {
     if (timerInterval) {
         clearInterval(timerInterval);
@@ -353,6 +370,7 @@ accelererTemps.addEventListener('click', () => {
     m.innerHTML = "00";
     s.innerHTML = "03";
 });
+
 
 
 
