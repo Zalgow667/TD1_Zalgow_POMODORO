@@ -34,7 +34,11 @@ wmInput.addEventListener('change', () => {
         m.innerHTML = wmInput.value;
     }
 
-    document.title = wmInput.value + " : 00 - Pomodoro Timer"
+    if(wmInput.value < 10){
+        document.title = "0" + wmInput.value + " : 00 - Pomodoro Timer"
+    } else {
+        document.title = wmInput.value + " : 00 - Pomodoro Timer"
+    }
 });
 
 const savedPm = localStorage.getItem('choixMinutesP') || '5';
@@ -49,7 +53,12 @@ if(savedWm < 10) {
     m.innerHTML = savedWm;
 }
 
-document.title = savedWm + " : 00 - Pomodoro en JS !";
+if(savedWm < 10){
+    document.title = "0" + savedWm + " : 00 - Pomodoro en JS !";
+} else {
+    document.title = savedWm + " : 00 - Pomodoro en JS !";
+}
+
 
 /* ------------------ */
 
@@ -315,11 +324,11 @@ texteCliquable.addEventListener('click', () => {
     if (cmpt_tmp % 2 == 0) {
         boutons.style.visibility = 'visible';
         boutons.style.display = 'block';
-        document.getElementById('flecheDirection').textContent = "▲ ▲ ▲"
+        document.getElementById('flecheDirection').textContent = "▲  ▲  ▲"
         cmpt_tmp++;
     } else {
         boutons.style.visibility = 'hidden';
-        document.getElementById('flecheDirection').textContent = "▼ ▼ ▼"
+        document.getElementById('flecheDirection').textContent = "▼  ▼  ▼"
         cmpt_tmp++;
     }
 });
