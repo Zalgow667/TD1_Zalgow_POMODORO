@@ -43,7 +43,12 @@ const savedWm = localStorage.getItem('choixMinutesT') || '25';
 pmInput.value = savedPm;
 wmInput.value = savedWm;
 
-m.innerHTML = savedWm;
+if(savedWm < 10) {
+    m.innerHTML = "0" + savedWm;
+} else {
+    m.innerHTML = savedWm;
+}
+
 document.title = savedWm + " : 00 - Pomodoro en JS !";
 
 /* ------------------ */
