@@ -83,6 +83,8 @@ start.addEventListener('click', () => {
         } else {
             ts.innerHTML = "Travail";
             ts.style.backgroundColor = "#CC0000";
+            body[0].style.background = "#FF5F42"
+            body[0].classList.add('change-background-wtor');
         }
     
         if (isSend == false) {
@@ -215,6 +217,7 @@ function timer() {
             ts.innerHTML = "Repos";
             ts.style.backgroundColor = "green";
             body[0].style.backgroundColor = "#00D600"; 
+            body[0].classList.remove('change-background-wtor');
             body[0].classList.remove('change-background-gtor');
             body[0].classList.add('change-background-rtog');
         } else {

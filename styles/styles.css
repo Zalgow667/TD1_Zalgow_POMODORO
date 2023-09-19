@@ -17,7 +17,7 @@ body {
     align-items: center;
     justify-content: center;
     color: black;
-    background-color: #FF5F42;
+    background-color: #ffffff;
 }
 
 #title {
@@ -208,6 +208,12 @@ body.change-background-gtor {
     animation-fill-mode: forwards; 
 }
 
+body.change-background-wtor {
+    animation-name: backgroundChangeWtoR; 
+    animation-duration: 1s; 
+    animation-fill-mode: forwards; 
+}
+
 /* Animation de clignotement */
 @keyframes blink {
     0% {
@@ -238,6 +244,16 @@ body.change-background-gtor {
         background-color: #FF5F42; 
     }
 }
+
+@keyframes backgroundChangeWtoR {
+    from {
+        background-color: #ffffff; 
+    }
+    to {
+        background-color: #FF5F42; 
+    }
+}
+
 
 
 /* Style pour les écrans de petite taille (max-width: 700px) */
