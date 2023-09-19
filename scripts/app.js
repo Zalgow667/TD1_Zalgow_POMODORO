@@ -16,30 +16,32 @@ const app = document.getElementById('app');
 const titleProgressBar = document.getElementById('progress-bar-title');
 const containerProgressBar = document.getElementById('progress-bar-container');
 const body = document.getElementsByTagName('body');
+const deleteLocalStorageButton = document.getElementById('deleteLocalStorage'); // Bouton pour supprimer les données du stockage local
+const clocheCheckbox = document.getElementById('clocheCheckbox'); // Gestion de la cloche (activation/désactivation)
+const texteCliquable = document.getElementById('texteCliquable');
+const texteOutil = document.getElementById('text_outil');
+const boutons = document.getElementById('boutons');
+const accelererTemps = document.getElementById('accelererTemps');
+const jouerMusique = document.getElementById('jouerMusique');
 
+let clocheActive = false;
 let startTimer;
 let isSend = false;
 let estOk = false;
 let cmpt_cycle = 0; // Compteur de cycle
+let timerInterval;
+let cmpt_tmp = 0;
+
+// Gestion de la musique
+let musiqueEnLecture = false;
+let audio_music = new Audio("audio/pomodoro.mp3");
+
+// Masquer les éléments au départ
 showChoice.style.visibility = "hidden"; // S'affiche quand le timer est lancer
 titleProgressBar.style.visibility = "hidden";
 containerProgressBar.style.visibility = "hidden";
-
-/* ------ TEST ------ */
-
-wmInput.addEventListener('change', () => {
-    if(wmInput.value < 10) {
-        m.innerHTML = "0" + wmInput.value;
-    } else {
-        m.innerHTML = wmInput.value;
-    }
-
-    if(wmInput.value < 10){
-        document.title = "0" + wmInput.value + " : 00 - Pomodoro Timer"
-    } else {
-        document.title = wmInput.value + " : 00 - Pomodoro Timer"
-    }
-});
+texteOutil.style.visibility = "hidden";
+texteCliquable.style.visibility = "hidden";
 
 const savedPm = localStorage.getItem('choixMinutesP') || '5';
 const savedWm = localStorage.getItem('choixMinutesT') || '25';
@@ -59,13 +61,24 @@ if(savedWm < 10){
     document.title = savedWm + " : 00 - Pomodoro en JS !";
 }
 
-
-/* ------------------ */
-
 if (cmpt_cycle === 0 && !isSend) {
     ts.innerHTML = "Rien";
     ts.style.backgroundColor = "gray";
 } 
+
+wmInput.addEventListener('change', () => {
+    if(wmInput.value < 10) {
+        m.innerHTML = "0" + wmInput.value;
+    } else {
+        m.innerHTML = wmInput.value;
+    }
+
+    if(wmInput.value < 10){
+        document.title = "0" + wmInput.value + " : 00 - Pomodoro Timer"
+    } else {
+        document.title = wmInput.value + " : 00 - Pomodoro Timer"
+    }
+});
 
 // Récupérer les valeurs des champs d'entrée depuis le stockage local au chargement de la page 
 window.addEventListener('load', () => {
@@ -139,49 +152,6 @@ start.addEventListener('click', () => {
         alert('Il y a une erreur dans votre saisie !');
     }
 });
-
-document.addEventListener('keydown', () => {
-    // Vérifie si la touche appuyé est la barre d'espace (code 32)
-    if (event.keyCode === 32 && estOk) {
-        event.preventDefault(); // Empêche le défilement de la page lors de l'appui sur la barre d'espace
-        // Si le compteur de cycle est à 0 ou s'il n'y a aucun cycle, affiche "rien" dans le type de session
-        if (cmpt_cycle === 0 && !isSend) {
-            ts.innerHTML = "Rien";
-        } else {
-            ts.innerHTML = "Travail";
-            ts.style.backgroundColor = "#CC0000";
-        }
-
-        if (isSend == false) {
-            alert('Vous devez envoyer vos valeurs !');
-        } else {
-            showChoice.style.visibility = "visible";
-            choix.style.visibility = "hidden";
-            sendValue.style.visibility = "hidden";
-            showMinutesChoiceP.innerHTML = pmValue;
-            showMinutesChoiceW.innerHTML = wmValue;
-
-            if (startTimer === undefined) {
-                startTimer = setInterval(timer, 1000); // Utilisation de 1000ms pour chaque seconde
-                start.innerHTML = "reset";
-            }
-
-            // Change le bouton start en reset
-            if (start.innerHTML == "reset") {
-                start.addEventListener('click', () => {
-                    resetTimer();
-                });
-            }
-        }
-
-        titleProgressBar.style.marginTop = "1em";
-        titleProgressBar.style.visibility = "visible";
-        containerProgressBar.style.visibility = "visible";
-        texteCliquable.style.visibility = "visible";
-        texteOutil.style.visibility = "visible";
-    }
-});
-
 
 // Fonction permettant l'écoulement du timer via la constante start et son écouteur et la méthode "setInterval()""
 function timer() {
@@ -270,6 +240,14 @@ function timer() {
     progressText.textContent = `${progressPercentage.toFixed(2)}%`;
 }
 
+// Fonction pour sonner la cloche si elle est activée
+function sonnerCloche() {
+    if (clocheActive) {
+        let audio_cloche = new Audio("audio/cloche.mp3");
+        audio_cloche.play();
+    }
+}
+
 
 //  Fonction servant à raffraichir la page
 function resetTimer() {
@@ -304,21 +282,6 @@ function getValue() {
     }
 }
 
-// Sélection des éléments HTML
-const texteCliquable = document.getElementById('texteCliquable');
-const texteOutil = document.getElementById('text_outil');
-const boutons = document.getElementById('boutons');
-const accelererTemps = document.getElementById('accelererTemps');
-const jouerMusique = document.getElementById('jouerMusique');
-
-// Déclaration de variables
-let timerInterval;
-let cmpt_tmp = 0;
-
-// Masquer les éléments au départ
-texteOutil.style.visibility = "hidden";
-texteCliquable.style.visibility = "hidden";
-
 // Gestion du clic sur "texteCliquable"
 texteCliquable.addEventListener('click', () => {
     if (cmpt_tmp % 2 == 0) {
@@ -333,10 +296,6 @@ texteCliquable.addEventListener('click', () => {
     }
 });
 
-// Gestion de la musique
-let musiqueEnLecture = false;
-let audio_music = new Audio("audio/pomodoro.mp3");
-
 jouerMusique.addEventListener('click', () => {
     if (musiqueEnLecture) {
         audio_music.pause();
@@ -349,24 +308,9 @@ jouerMusique.addEventListener('click', () => {
     }
 });
 
-// Gestion de la cloche (activation/désactivation)
-const clocheCheckbox = document.getElementById('clocheCheckbox');
-let clocheActive = false;
-
 clocheCheckbox.addEventListener('change', () => {
     clocheActive = clocheCheckbox.checked;
 });
-
-// Fonction pour sonner la cloche si elle est activée
-function sonnerCloche() {
-    if (clocheActive) {
-        let audio_cloche = new Audio("audio/cloche.mp3");
-        audio_cloche.play();
-    }
-}
-
-// Bouton pour supprimer les données du stockage local
-const deleteLocalStorageButton = document.getElementById('deleteLocalStorage');
 
 deleteLocalStorageButton.addEventListener('click', () => {
     localStorage.clear();
