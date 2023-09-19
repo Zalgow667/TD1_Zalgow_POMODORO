@@ -138,7 +138,8 @@ footer {
 
 #mon_github {
     text-decoration: none;
-    color: #fafafa;
+    color: #303030;
+    text-shadow: 2px 2px 2px rgb(136, 136, 136);
     font-weight: bold;
 }
 
