@@ -312,6 +312,7 @@ clocheCheckbox.addEventListener('change', () => {
     clocheActive = clocheCheckbox.checked;
 });
 
+// Bouton pour supprimer les locales storages
 deleteLocalStorageButton.addEventListener('click', () => {
     localStorage.clear();
     location.reload();
