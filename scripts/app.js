@@ -5,6 +5,7 @@ const pmInput = document.getElementById('choixMinutesP');
 const wmInput = document.getElementById('choixMinutesT');
 const semicolon = document.getElementById('semicolon');
 const start = document.getElementById('start');
+const reset = document.getElementById('reset');
 const cycle = document.getElementById('nb_cycle');
 const ts = document.getElementById('type_session');
 const choix = document.getElementById('choix');
@@ -42,6 +43,7 @@ titleProgressBar.style.visibility = "hidden";
 containerProgressBar.style.visibility = "hidden";
 texteOutil.style.visibility = "hidden";
 texteCliquable.style.visibility = "hidden";
+reset.style.display = "none";
 
 const savedPm = localStorage.getItem('choixMinutesP') || '5';
 const savedWm = localStorage.getItem('choixMinutesT') || '25';
@@ -132,14 +134,8 @@ start.addEventListener('click', () => {
 
             if (startTimer === undefined) {
                 startTimer = setInterval(timer, 1000); // Utilisation de 1000ms pour chaque seconde
-                start.innerHTML = "reset";
-            }
-    
-            // Change le bouton start en reset
-            if (start.innerHTML == "reset") {
-                start.addEventListener('click', () => {
-                    resetTimer();
-                });
+                start.style.display = "none";
+                reset.style.display = "initial";
             }
         }
     
@@ -155,6 +151,7 @@ start.addEventListener('click', () => {
 
 // Fonction permettant l'écoulement du timer via la constante start et son écouteur et la méthode "setInterval()""
 function timer() {
+    
     let minutes = parseInt(m.innerHTML);
     let secondes = parseInt(s.innerHTML);
     let pm = parseInt(pmInput.value);
@@ -274,7 +271,12 @@ function getValue() {
         wmInput.value = wmValue.toString();
 
         // Mettre à jour l'affichage
-        m.innerHTML = wmValue;
+        if(wmValue < 10){
+            m.innerHTML = "0" + wmValue;
+        } else {
+            m.innerHTML = wmValue;
+        }
+        
         estOk = true;
     } else {
         estOk = false;
