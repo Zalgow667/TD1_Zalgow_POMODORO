@@ -24,8 +24,12 @@
     
         <div class="circle"></div>
 
-        <button id="start" aria-label="demarrer" onclick="getValue();">
+        <button class="button-timer" id="start" aria-label="demarrer" onclick="getValue();">
             <em class="fas fa-play"></em>
+        </button>
+
+        <button class="button-timer" id="reset" aria-label="reset" onclick="resetTimer();">
+            <em class="fas fa-refresh"></em>
         </button>
 
         <div id="choix">
@@ -49,12 +53,12 @@
         <div id="text_outil">
             <p id="texteCliquable">Outil potentiellement utile</p>
             <p id="flecheDirection">▼  ▼  ▼</p>
-            <div id="boutons" style="display: none;">
-                <button id="accelererTemps" aria-label="allezALaFin">Allez à la fin</button>
-                <button id="deleteLocalStorage" aria-label="supprimerLocalStorage">Supprimer le localStorage</button>
-                <button id="jouerMusique" aria-label="jouerDeLaMusique">Jouer de la musique</button>
+            <div class="bouttons-utilitaire" id="boutons" style="display: none;">
+                <button class="bouttons-u" id="accelererTemps" aria-label="allezALaFin">Allez à la fin</button>
+                <button class="bouttons-u" id="deleteLocalStorage" aria-label="supprimerLocalStorage">Supprimer le localStorage</button>
+                <button  class="bouttons-u" id="jouerMusique" aria-label="jouerDeLaMusique">Jouer de la musique</button>
                 <input type="checkbox" id="clocheCheckbox">
-                <label for="clocheCheckbox">Alarme fin de cycle</label>
+                <label for="clocheCheckbox" id="textCheckbox">Alarme fin de cycle</label>
             </div>
         </div>
 
