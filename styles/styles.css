@@ -42,9 +42,10 @@ body {
 }
 
 #minutes, #secondes, #semicolon {
+    text-shadow: 2px 2px 2px black;
     font-size: 2em;
     font-weight: bold;
-    color: #FFFFFF;
+    color: #000000;
 }
   
 .circle {
@@ -195,18 +196,49 @@ footer {
     margin-top: 1em;
 }
 
+body.change-background-rtog {
+    animation-name: backgroundChangeRtoG; 
+    animation-duration: 1s; 
+    animation-fill-mode: forwards; 
+}
+
+body.change-background-gtor {
+    animation-name: backgroundChangeGtoR; 
+    animation-duration: 1s; 
+    animation-fill-mode: forwards; 
+}
+
 /* Animation de clignotement */
 @keyframes blink {
     0% {
         color: red;
     }
     50% {
-        color: white;
+        color: rgb(0, 0, 0);
     }
     100% {
         color: red;
     }
 }
+
+@keyframes backgroundChangeRtoG {
+    from {
+        background-color: #FF5F42; 
+    }
+    to {
+        background-color: #65b865; 
+    }
+}
+
+@keyframes backgroundChangeGtoR {
+    from {
+        background-color: #65b865; 
+    }
+    to {
+        background-color: #FF5F42; 
+    }
+}
+
 
 /* Style pour les écrans de petite taille (max-width: 700px) */
 @media screen and (max-width: 500px) {

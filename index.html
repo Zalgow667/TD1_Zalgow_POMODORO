@@ -33,7 +33,7 @@
         </div>        
         
         <button type="button" id="confirm" onclick="getValue();">Envoyer les temps</button>
-        <p id="showChoice">Vous avez choisi : <span id="temps_work"></span> minutes de travail et <span id="temps_pause"></span> minutes de pause</p>
+        <p id="showChoice">Vous avez choisi : <span id="temps_work"></span> <span id="pluriel_w"></span> de travail et <span id="temps_pause"></span> <span id="pluriel_p"></span> de pause</p>
         
         <h3 id="progress-bar-title">Barre de progression du timer :</h3>
         
@@ -48,6 +48,8 @@
             <div id="boutons" style="display: none;">
                 <button id="accelererTemps">Allez à la fin</button>
                 <button id="jouerMusique">Jouer de la musique</button>
+                <input type="checkbox" id="clocheCheckbox" unchecked>
+                <label for="clocheCheckbox">Alarme fin de cycle</label>
             </div>
         </div>
 

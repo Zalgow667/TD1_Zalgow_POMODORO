@@ -15,6 +15,7 @@ const showMinutesChoiceP = document.getElementById('temps_pause');
 const app = document.getElementById('app');
 const titleProgressBar = document.getElementById('progress-bar-title');
 const containerProgressBar = document.getElementById('progress-bar-container');
+const body = document.getElementsByTagName('body');
 
 let startTimer;
 let isSend = false;
@@ -27,7 +28,12 @@ containerProgressBar.style.visibility = "hidden";
 /* ------ TEST ------ */
 
 wmInput.addEventListener('change', () => {
-    m.innerHTML = wmInput.value;
+    if(wmInput.value < 10) {
+        m.innerHTML = "0" + wmInput.value;
+    } else {
+        m.innerHTML = wmInput.value;
+    }
+
     document.title = wmInput.value + " : 00 - Pomodoro Timer"
 });
 
@@ -61,7 +67,7 @@ window.addEventListener('load', () => {
 
 // Ajout d'un écouteur a ma constante start, lance le pomdoro en cas de clique
 start.addEventListener('click', () => {
-    if(pmValue >= 0 && wmValue >= 0 && estOk){
+    if(estOk){
         // Récupérez les valeurs des champs d'entrée
         const pmValue = parseInt(pmInput.value);
         const wmValue = parseInt(wmInput.value);
@@ -82,7 +88,19 @@ start.addEventListener('click', () => {
             sendValue.style.visibility = "hidden";
             showMinutesChoiceP.innerHTML = pmValue;
             showMinutesChoiceW.innerHTML = wmValue;
-    
+            
+            if(wmValue > 1){
+                document.getElementById('pluriel_w').innerHTML = "minutes";
+            } else {
+                document.getElementById('pluriel_w').innerHTML = "minute";
+            }
+
+            if(pmValue > 1){
+                document.getElementById('pluriel_p').innerHTML = "minutes";
+            } else {
+                document.getElementById('pluriel_p').innerHTML = "minute";
+            }
+
             if (startTimer === undefined) {
                 startTimer = setInterval(timer, 1000); // Utilisation de 1000ms pour chaque seconde
                 start.innerHTML = "reset";
@@ -145,8 +163,6 @@ document.addEventListener('keydown', () => {
         containerProgressBar.style.visibility = "visible";
         texteCliquable.style.visibility = "visible";
         texteOutil.style.visibility = "visible";
-    } else {
-        alert('Il y a une erreur dans votre saisie !');
     }
 });
 
@@ -192,18 +208,24 @@ function timer() {
         if (cmpt_cycle % 2 === 0) {
             formattedMinutes = pm.toString().padStart(2, '0');
             ts.innerHTML = "Repos";
-            ts.style.backgroundColor = "green"
+            ts.style.backgroundColor = "green";
+            body[0].style.backgroundColor = "#00D600"; 
+            body[0].classList.remove('change-background-gtor');
+            body[0].classList.add('change-background-rtog');
         } else {
             formattedMinutes = wm.toString().padStart(2, '0');
             ts.innerHTML = "Travail";
-            ts.style.backgroundColor = "#CC0000"
+            ts.style.backgroundColor = "#CC0000";
+            body[0].style.backgroundColor = "#CC0000";
+            body[0].classList.remove('change-background-rtog');
+            body[0].classList.add('change-background-gtor');
         }
         
         // Incrémente et met à jour le compteur
         cmpt_cycle++;
         cycle.innerHTML = cmpt_cycle;
 
-        // Ceci sert a mettre au pluriel le mot "cycle"
+        // Ceci sert à mettre au pluriel le mot "cycle"
         if (cmpt_cycle > 1) {
             document.getElementById('pluriel').innerHTML = " cycles";
         }
@@ -213,9 +235,8 @@ function timer() {
         s.innerHTML = "00"; // Réinitialiser les secondes à 00
     }
 
-    if (minutes === 0 && secondes === 1) {
-        let audio = new Audio("audio/cloche.mp3");
-        audio.play();
+    if(minutes == 0 && secondes == 1){
+        sonnerCloche();
     }
 
     // Calculez le pourcentage de temps restant
@@ -231,6 +252,7 @@ function timer() {
     const progressText = document.getElementById('progress-text');
     progressText.textContent = `${progressPercentage.toFixed(2)}%`;
 }
+
 
 //  Fonction servant à raffraichir la page
 function resetTimer() {
@@ -287,10 +309,34 @@ texteCliquable.addEventListener('click', () => {
     }
 });
 
+let musiqueEnLecture = false;
+let audio_music = new Audio("audio/pomodoro.mp3");
+
 jouerMusique.addEventListener('click', () => {
-    let audio_music = new Audio("audio/pomodoro.mp3");
-    audio_music.play();
+    if (musiqueEnLecture) {
+        audio_music.pause();
+        musiqueEnLecture = false;
+        jouerMusique.textContent = "Lire la musique";
+    } else {
+        audio_music.play();
+        musiqueEnLecture = true;
+        jouerMusique.textContent = "Couper la musique";
+    }
 });
+
+const clocheCheckbox = document.getElementById('clocheCheckbox');
+let clocheActive = false;
+
+clocheCheckbox.addEventListener('change', () => {
+    clocheActive = clocheCheckbox.checked;
+});
+
+function sonnerCloche() {
+    if (clocheActive) {
+        let audio_cloche = new Audio("audio/cloche.mp3");
+        audio_cloche.play();
+    }
+}
 
 accelererTemps.addEventListener('click', () => {
     if (timerInterval) {
@@ -298,7 +344,8 @@ accelererTemps.addEventListener('click', () => {
     }
 
     m.innerHTML = "00";
-    s.innerHTML = "11";
+    s.innerHTML = "03";
 });
+
 
 
