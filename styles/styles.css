@@ -298,7 +298,7 @@ body.change-background-wtor {
     margin: 5px;
     padding: 5px 10px;
     font-size: 1em;
-    background-color: #3498db; 
+    background-color: #175A87; 
     color: #fff; 
     border: none;
     cursor: pointer;
@@ -307,7 +307,7 @@ body.change-background-wtor {
 }
 
 .bouttons-u:hover {
-    background-color: #2980b9; 
+    background-color: #052a42; 
 }
 
 #clocheCheckbox {
