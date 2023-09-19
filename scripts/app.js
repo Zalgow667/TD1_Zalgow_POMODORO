@@ -307,9 +307,11 @@ texteCliquable.addEventListener('click', () => {
     if(cmpt_tmp % 2 == 0) {
         boutons.style.visibility = 'visible';
         boutons.style.display = 'block';
+        document.getElementById('flecheDirection').textContent = "▲ ▲ ▲"
         cmpt_tmp++;
     } else {
         boutons.style.visibility = 'hidden';
+        document.getElementById('flecheDirection').textContent = "▼ ▼ ▼"
         cmpt_tmp++;
     }
 });

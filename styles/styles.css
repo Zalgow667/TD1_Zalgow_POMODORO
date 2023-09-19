@@ -264,7 +264,7 @@ body.change-background-gtor {
     }
 }
 
-@media screen and (max-height: 800px) {
+@media screen and (max-height: 844px) {
     footer {
         display: none;
       }
